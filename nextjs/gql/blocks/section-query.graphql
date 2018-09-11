@@ -7,11 +7,13 @@ query SectionQueryBlock($input: WebsiteScheduledPlatformContentQuery!) {
 				content {
 					id
 					name
+					type
           slug
 					published
 					primarySection {
 						id
 						name
+						alias
 					}
 				}
 			}
