@@ -1,17 +1,17 @@
 import React from 'react';
 import Link from 'next/link';
 import { Navbar, NavbarBrand, Nav } from 'reactstrap';
+import { siteName, primaryNavItems } from '../site-config.json';
 
-import ActiveNavItem from './ActiveNavItem';
+import Item from './ActiveNavItem';
 
 const SiteNavigation = () => (
   <Navbar color="primary" dark expand>
     <Link href="/" passHref>
-      <NavbarBrand>Officer</NavbarBrand>
+      <NavbarBrand>{siteName}</NavbarBrand>
     </Link>
     <Nav className="mr-auto" navbar>
-      <ActiveNavItem href="/">Home</ActiveNavItem>
-      <ActiveNavItem href="/section">Tactical</ActiveNavItem>
+      {primaryNavItems.map(item => <Item key={item.href} href={item.href}>{item.name}</Item>)}
     </Nav>
   </Navbar>
 );

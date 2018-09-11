@@ -1,0 +1,7 @@
+{
+  "siteName": "Officer",
+  "primaryNavItems": [
+    { "href": "/", "name": "Home" },
+    { "href": "/section", "name": "Section" }
+  ]
+}
