@@ -1,0 +1,16 @@
+query SectionQueryBlock($input: WebsiteScheduledPlatformContentQuery!) {
+	websiteScheduledPlatformContent(input: $input) {
+		edges {
+			cursor
+			node {
+				id
+				content {
+					id
+					name
+					type
+          slug
+				}
+			}
+		}
+	}
+}
