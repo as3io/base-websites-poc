@@ -5,14 +5,6 @@ import { ApolloProvider } from 'react-apollo';
 import withApollo from '../apollo/WithApollo';
 
 class WebsiteApp extends App {
-  static async getInitialProps({ Component, ctx }) {
-    let pageProps = {};
-    if (Component.getInitialProps) {
-      pageProps = await Component.getInitialProps(ctx);
-    }
-    return pageProps;
-  }
-
   render() {
     const { Component, pageProps, apollo } = this.props;
     return (

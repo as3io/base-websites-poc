@@ -8,12 +8,13 @@ const ActiveNavItem = ({
   children,
   router,
   href,
+  as,
   title,
 }) => {
   const isActive = router.pathname === href;
   return (
     <NavItem active={isActive}>
-      <Link href={href} passHref>
+      <Link href={href} as={as} passHref>
         <NavLink title={title}>{children}</NavLink>
       </Link>
     </NavItem>
@@ -23,6 +24,7 @@ const ActiveNavItem = ({
 ActiveNavItem.propTypes = {
   href: PropTypes.string.isRequired,
   title: PropTypes.string,
+  as: PropTypes.string,
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node,
@@ -33,6 +35,7 @@ ActiveNavItem.propTypes = {
 };
 
 ActiveNavItem.defaultProps = {
+  as: null,
   title: null,
 };
 

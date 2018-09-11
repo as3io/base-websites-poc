@@ -1,54 +1,72 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import SectionQuery from '../components/SectionQuery';
 import DefaultLayout from '../layouts/Default';
 
-export default () => (
-  <DefaultLayout>
-    <h1>Section (Tactical)</h1>
-    <SectionQuery sectionId={56156}>
-      {({ loading, error }) => {
-        if (loading) return <span>Loading...</span>;
-        if (error) {
+const SectionPage = ({ id }) => {
+  return (
+    <DefaultLayout>
+      <h1>
+        Section
+        {' '}
+        {id}
+      </h1>
+      <SectionQuery sectionId={56156}>
+        {({ loading, error }) => {
+          if (loading) return <span>Loading...</span>;
+          if (error) {
+            return (
+              <span>
+                Error
+                {' '}
+                {error.message}
+              </span>
+            );
+          }
+
           return (
-            <span>
-              Error
+            <p>
+              Loaded
               {' '}
-              {error.message}
-            </span>
+              56156-tactical/firearms
+            </p>
           );
-        }
+        }}
+      </SectionQuery>
 
-        return (
-          <p>
-            Loaded
-            {' '}
-            56156-tactical/firearms
-          </p>
-        );
-      }}
-    </SectionQuery>
+      <SectionQuery sectionId={56178}>
+        {({ loading, error }) => {
+          if (loading) return <span>Loading...</span>;
+          if (error) {
+            return (
+              <span>
+                Error
+                {' '}
+                {error.message}
+              </span>
+            );
+          }
 
-    <SectionQuery sectionId={56178}>
-      {({ loading, error }) => {
-        if (loading) return <span>Loading...</span>;
-        if (error) {
           return (
-            <span>
-              Error
+            <p>
+              Loaded
               {' '}
-              {error.message}
-            </span>
+              56178-tactical/flashlights
+            </p>
           );
-        }
+        }}
+      </SectionQuery>
+    </DefaultLayout>
+  );
+};
 
-        return (
-          <p>
-            Loaded
-            {' '}
-            56178-tactical/flashlights
-          </p>
-        );
-      }}
-    </SectionQuery>
-  </DefaultLayout>
-);
+SectionPage.getInitialProps = async ({ query }) => {
+  const { id } = query;
+  return { id };
+};
+
+SectionPage.propTypes = {
+  id: PropTypes.string.isRequired,
+};
+
+export default SectionPage;

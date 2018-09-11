@@ -11,7 +11,8 @@ const SiteNavigation = () => (
       <NavbarBrand>{siteName}</NavbarBrand>
     </Link>
     <Nav className="mr-auto" navbar>
-      {primaryNavItems.map(item => <Item key={item.href} href={item.href}>{item.name}</Item>)}
+      {primaryNavItems
+        .map(item => <Item key={item.href} href={item.href} as={item.as}>{item.name}</Item>)}
     </Nav>
   </Navbar>
 );
