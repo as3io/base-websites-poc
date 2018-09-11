@@ -1,26 +1,26 @@
-# Base Websites Proofs-of-Concept
+# Website Proofs-of-Concept
 
 ## Requirements
 ### General
-1. SSR (Server-Side Rendering)
-2. Apollo GraphQL (client and server side)
-3. Parallel query execution (that can wait for parent query resolution)
-4. Basic block query components (e.g. website section query) that can access passed props on both client and server
-5. Boilerplate routing (that accepts customization?)
-6. Wildcard routing _without_ prefixed resource names (e.g. `/foo` can be resolved to a section resource while `/foo/article/12345678` can resolve to content) and renamed content slugs can properly 301-redirect
-7. Section pages that can be configured per alias (e.g. `some-section-alias` vs. `another-section-alias` vs. `default`)
-8. Content pages that can be configured per type (e.g. `press-release` vs. `company` vs. `default`)
-9. Ability to control when queries should (or shouldn't) be loaded on the server (i.e. client-side only queries)
-10. Traditional HTTP status codes (404 vs. 500) that can also be triggered when correspondong GraphQL errors are encountered
-11. Preferably can prefetch the corresponding `href` when anchor-click intent is shown (e.g. a URL is hovered over)
-12. Loading states for router transitions and per-component queries
-13. Metadata handling (e.g. description and social/opengraph tags)
-14. Rel link handling, (e.g. canonical and next/previous)
-15. Static content serving for items like `favicon.ico`, `robots.txt` and `manifest.json`
-16. Dynamic pages that "mimic" static content, e.g. `sitemap.xml`
-17. CSS _should_ be compiled into a single, minified file, but should not block the page render
-18. Images should display when in-view, be responsive, and properly handle DPR (e.g. using `<picture>` and/or `<img srcset="">`)
-19. Enable GraphQL APQ (automatic persisted queries) and explore CDN caching (also, enable gzipping for responses)
+- SSR (Server-Side Rendering)
+- Apollo GraphQL (client and server side)
+- Parallel query execution (that can wait for parent query resolution)
+- Basic block query components (e.g. website section query) that can access passed props on both client and server
+- Boilerplate routing (that accepts customization?)
+- Wildcard routing _without_ prefixed resource names (e.g. `/foo` can be resolved to a section resource while `/foo/article/12345678` can resolve to content) and renamed content slugs can properly 301-redirect
+- Section pages that can be configured per alias (e.g. `some-section-alias` vs. `another-section-alias` vs. `default`)
+- Content pages that can be configured per type (e.g. `press-release` vs. `company` vs. `default`)
+- Ability to control when queries should (or shouldn't) be loaded on the server (i.e. client-side only queries)
+- Traditional HTTP status codes (404 vs. 500) that can also be triggered when correspondong GraphQL errors are encountered
+- Preferably can prefetch the corresponding `href` when anchor-click intent is shown (e.g. a URL is hovered over)
+- Loading states for router transitions and per-component queries
+- Metadata handling (e.g. description and social/opengraph tags)
+- Rel link handling, (e.g. canonical and next/previous)
+- Static content serving for items like `favicon.ico`, `robots.txt` and `manifest.json`
+- Dynamic pages that "mimic" static content, e.g. `sitemap.xml`
+- CSS _should_ be compiled into a single, minified file, but should not block the page render
+- Images should display when in-view, be responsive, and properly handle DPR (e.g. using `<picture>` and/or `<img srcset="">`)
+- Enable GraphQL APQ (automatic persisted queries) and explore CDN caching (also, enable gzipping for responses)
 
 ### Content Page
 ### Section Page
