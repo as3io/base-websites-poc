@@ -3,5 +3,7 @@
   "primaryNavItems": [
     { "href": "/", "name": "Home" },
     { "href": "/section", "name": "Section" }
-  ]
+  ],
+  "graphTenant": "cygnus_ofcr",
+  "graphToken": "1fd5a684-2e95-43fe-b0da-861d78c6c567"
 }
