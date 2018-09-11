@@ -1,0 +1,8 @@
+query SectionPage($input: ModelIdInput!) {
+	websiteSection(input: $input) {
+		id
+    name
+    description
+    seoTitle
+	}
+}

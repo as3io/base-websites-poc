@@ -8,7 +8,7 @@ const DefaultLayout = ({ children }) => (
     <SiteNavigation />
     <Container>
       <Row>
-        <Col>
+        <Col className="mt-3">
           {children}
         </Col>
       </Row>
