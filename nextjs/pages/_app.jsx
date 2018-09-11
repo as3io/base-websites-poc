@@ -1,3 +1,4 @@
+import 'bootstrap/dist/css/bootstrap.css';
 import App, { Container } from 'next/app';
 import React from 'react';
 import { ApolloProvider } from 'react-apollo';

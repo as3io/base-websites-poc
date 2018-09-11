@@ -1,6 +1,7 @@
 const { EnvironmentPlugin } = require('webpack');
+const withCSS = require('@zeit/next-css')
 
-module.exports = {
+module.exports = withCSS({
   webpack: (config, { dev }) => {
     config.plugins.push(new EnvironmentPlugin(['NODE_ENV']));
 
@@ -23,4 +24,4 @@ module.exports = {
     }
     return config;
   },
-};
+});

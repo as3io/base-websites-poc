@@ -12,12 +12,14 @@
     "start": "next start"
   },
   "dependencies": {
+    "@zeit/next-css": "^0.2.0",
     "apollo-cache-inmemory": "^1.2.9",
     "apollo-client": "^2.4.1",
     "apollo-link": "^1.2.2",
     "apollo-link-context": "^1.0.8",
     "apollo-link-error": "^1.1.0",
     "apollo-link-http": "^1.5.4",
+    "bootstrap": "4.1.1",
     "graphql": "^0.13.2",
     "graphql-tag": "^2.9.2",
     "isomorphic-unfetch": "^2.1.1",
@@ -25,7 +27,8 @@
     "prop-types": "^15.6.2",
     "react": "^16.5.0",
     "react-apollo": "^2.1.11",
-    "react-dom": "^16.5.0"
+    "react-dom": "^16.5.0",
+    "reactstrap": "^6.4.0"
   },
   "devDependencies": {
     "eslint": "^5.5.0",
