@@ -16,10 +16,11 @@
 12. Loading states for router transitions and per-component queries
 13. Metadata handling (e.g. description and social/opengraph tags)
 14. Rel link handling, (e.g. canonical and next/previous)
-15. Static content serving for items like `favicon.ico` and `robots.txt`
+15. Static content serving for items like `favicon.ico`, `robots.txt` and `manifest.json`
 16. Dynamic pages that "mimic" static content, e.g. `sitemap.xml`
 17. CSS _should_ be compiled into a single, minified file, but should not block the page render
 18. Images should display when in-view, be responsive, and properly handle DPR (e.g. using `<picture>` and/or `<img srcset="">`)
+19. Enable GraphQL APQ (automatic persisted queries) and explore CDN caching (also, enable gzipping for responses)
 
 ### Content Page
 ### Section Page
