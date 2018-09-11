@@ -1,8 +1,6 @@
 const { EnvironmentPlugin } = require('webpack');
 
 module.exports = {
-  distDir: '../.next/build',
-
   webpack: (config, { dev }) => {
     config.plugins.push(new EnvironmentPlugin(['NODE_ENV']));
 
