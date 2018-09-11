@@ -12,6 +12,7 @@
 8. Content pages that can be configured per type (e.g. `press-release` vs. `company` vs. `default`)
 9. Ability to control when queries should (or shouldn't) be prefetched from the server (i.e. client-side only queries)
 10. Traditional HTTP status codes (404 vs. 500) that can also be triggered when correspondong GraphQL errors are encountered
+11. Preferably can prefetch the corresponding `href` when anchor-click intent is shown (e.g. a URL is hovered over)
 
 ### Content Page
 ### Section Page
