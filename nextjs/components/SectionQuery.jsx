@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { Query } from 'react-apollo';
 
@@ -13,11 +13,11 @@ const SectionQuery = ({
   const pagination = { first, after };
   const input = { sectionId, pagination };
   return (
-    <Fragment>
+    <>
       <Query query={query} variables={{ input }}>
         {({ loading, error, data }) => (children({ loading, error, data }))}
       </Query>
-    </Fragment>
+    </>
   );
 };
 
