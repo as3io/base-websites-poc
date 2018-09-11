@@ -1,0 +1,8 @@
+query ContentPage($input: RootPlatformContentQueryOne!) {
+	platformContent(input: $input) {
+		id
+    name
+    teaser
+    body
+	}
+}
