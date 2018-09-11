@@ -7,8 +7,11 @@ const { isArray } = Array;
  *
  * @param {Error} e
  */
-const is404 = e => isArray(e.graphQLErrors)
-  && e.graphQLErrors[0].message
-  && /found for ID/i.test(e.graphQLErrors[0].message);
+const is404 = (e) => {
+  if (isArray(e.graphQLErrors) && e.graphQLErrors[0] && e.graphQLErrors[0].message) {
+    return /found for ID/i.test(e.graphQLErrors[0].message);
+  }
+  return false;
+};
 
 export default is404;
