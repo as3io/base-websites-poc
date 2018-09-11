@@ -1,12 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Container, Row, Col } from 'reactstrap';
 import SiteNavigation from '../components/SiteNavigation';
 
 const DefaultLayout = ({ children }) => (
-  <main>
+  <>
     <SiteNavigation />
-    {children}
-  </main>
+    <Container>
+      <Row>
+        <Col>
+          {children}
+        </Col>
+      </Row>
+    </Container>
+  </>
 );
 
 DefaultLayout.propTypes = {
