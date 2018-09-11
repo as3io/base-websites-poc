@@ -4,7 +4,7 @@
 ### General
 1. SSR (Server-Side Rendering)
 2. Apollo GraphQL client (client and server side)
-3. Parallel query execution
+3. Parallel query execution (that can wait for parent query resolution)
 4. Basic block query components (e.g. website section query) that can access passed props on both client and server
 5. Boilerplate routing (that accepts customization?)
 6. Wildcard routing without prefixed resource names (e.g. `/foo` can be resolved to a section resource while `/foo/article/12345678` can resolve to content)
