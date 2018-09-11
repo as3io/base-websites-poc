@@ -18,6 +18,8 @@
 14. Rel link handling, (e.g. canonical and next/previous)
 15. Static content serving for items like `favicon.ico` and `robots.txt`
 16. Dynamic pages that "mimic" static content, e.g. `sitemap.xml`
+17. CSS _should_ be compiled into a single, minified file, but should not block the page render
+18. Images should display when in-view, be responsive, and properly handle DPR (e.g. using `<picture>` and/or `<img srcset="">`)
 
 ### Content Page
 ### Section Page
