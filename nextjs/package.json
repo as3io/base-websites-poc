@@ -1,0 +1,19 @@
+{
+  "name": "base-websites-nextjs",
+  "version": "0.1.0",
+  "main": "src/index.js",
+  "repository": "https://github.com/as3io/base-websites-poc.git",
+  "author": "Jacob Bare <jacob@limit0.io>",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "next": "^6.1.2",
+    "react": "^16.5.0",
+    "react-dom": "^16.5.0"
+  }
+}
