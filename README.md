@@ -13,6 +13,11 @@
 9. Ability to control when queries should (or shouldn't) be prefetched from the server (i.e. client-side only queries)
 10. Traditional HTTP status codes (404 vs. 500) that can also be triggered when correspondong GraphQL errors are encountered
 11. Preferably can prefetch the corresponding `href` when anchor-click intent is shown (e.g. a URL is hovered over)
+12. Loading states for router transitions and per-component queries
+13. Metadata handling (e.g. description and social/opengraph tags)
+14. Rel link handling, (e.g. canonical and next/previous)
+15. Static content serving for items like `favicon.ico` and `robots.txt`
+16. Dynamic pages that "mimic" static content, e.g. `sitemap.xml`
 
 ### Content Page
 ### Section Page
