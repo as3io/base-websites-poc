@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Query } from 'react-apollo';
 import DefaultLayout from '../layouts/Default';
+import ContentList from '../components/Content/List';
 
 import sectionPage from '../gql/queries/section-page.graphql';
 
@@ -15,7 +16,10 @@ const SectionPage = ({ id }) => {
           if (error) return <span>{error.message}</span>;
           const { websiteSection } = data;
           return (
-            <h1>{websiteSection.name}</h1>
+            <section>
+              <h1>{websiteSection.name}</h1>
+              <ContentList sectionId={websiteSection.id} />
+            </section>
           );
         }}
       </Query>

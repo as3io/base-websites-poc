@@ -11,7 +11,7 @@ const SectionQuery = ({
   children,
 }) => {
   const pagination = { first, after };
-  const input = { sectionId, pagination };
+  const input = { sectionId, pagination, sectionBubbling: false };
   return (
     <>
       <Query query={query} variables={{ input }}>
