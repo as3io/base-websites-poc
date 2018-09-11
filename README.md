@@ -7,7 +7,8 @@
 - Parallel query execution (that can wait for parent query resolution)
 - Basic block query components (e.g. website section query) that can access passed props on both client and server
 - Boilerplate routing (that accepts customization?)
-- Wildcard routing _without_ prefixed resource names (e.g. `/foo` can be resolved to a section resource while `/foo/article/12345678` can resolve to content) and renamed content slugs can properly 301-redirect
+- Wildcard routing _without_ prefixed resource names (e.g. `/foo` can be resolved to a section resource while `/foo/article/12345678` can resolve to content)
+- Ensure renamed content slugs can properly 301-redirect (legacy/hardcoded redirects should _not_ be handled by the application)
 - Section pages that can be configured per alias (e.g. `some-section-alias` vs. `another-section-alias` vs. `default`)
 - Content pages that can be configured per type (e.g. `press-release` vs. `company` vs. `default`)
 - Ability to control when queries should (or shouldn't) be loaded on the server (i.e. client-side only queries)
