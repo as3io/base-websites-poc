@@ -1,17 +1,15 @@
 import { HttpLink } from 'apollo-link-http';
 import { ApolloLink } from 'apollo-link';
 import { onError } from 'apollo-link-error';
-import { setContext } from 'apollo-link-context';
 import fetch from 'isomorphic-unfetch';
-import { graphTenant, graphToken } from '../site-config.json';
 
 export default (req) => {
   const headers = req ? req.headers : {};
+  const protocol = process.env.NODE_ENV === 'production' ? 'https' : 'http';
+  const uri = (req) ? `${protocol}://${req.get('host')}` : '';
+
   return {
     link: ApolloLink.from([
-      setContext(() => ({
-        headers: { authorization: `Bearer ${graphToken}`, 'x-tenant-key': graphTenant },
-      })),
       onError(({ graphQLErrors, networkError }) => {
         if (graphQLErrors) {
           // eslint-disable-next-line no-console
@@ -21,7 +19,7 @@ export default (req) => {
         if (networkError) console.error(`[Network error]: ${networkError}`);
       }),
       new HttpLink({
-        uri: 'http://localhost:8937/graphql',
+        uri: `${uri}/graphql`,
         headers,
         fetch,
       }),
