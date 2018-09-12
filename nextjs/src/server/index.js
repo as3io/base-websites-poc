@@ -1,8 +1,9 @@
+const env = require('./env');
 const express = require('express');
 const helmet = require('helmet');
 const routes = require('./routes');
 
-const PORT = process.env.PORT || 3000;
+const { PORT } = env;
 
 const server = express();
 server.use(helmet());
