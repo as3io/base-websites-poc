@@ -9,7 +9,5 @@
     { "href": "/section?id=56374", "name": "Command/HQ", "as": "/command-hq"  },
     { "href": "/section?id=57444", "name": "Product Guide", "as": "/directory"  },
     { "href": "https://forum.officer.com", "name": "Forums"  }
-  ],
-  "graphTenant": "cygnus_ofcr",
-  "graphToken": "1fd5a684-2e95-43fe-b0da-861d78c6c567"
+  ]
 }
