@@ -19,7 +19,6 @@ const link = ApolloLink.from([
     fetch,
   }),
 ]);
-console.info(link);
 
 let promise;
 module.exports = async () => {
