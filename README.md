@@ -23,12 +23,3 @@
 - Images should display when in-view, be responsive, and properly handle DPR (e.g. using `<picture>` and/or `<img srcset="">`)
 - Enable GraphQL APQ (automatic persisted queries) and explore CDN caching (also, enable gzipping for responses)
 
-### Content Page
-### Section Page
-### Home Page
-
-## Instances
-
-### NextJS (React)
-
-### NuxtJS (Vue)
