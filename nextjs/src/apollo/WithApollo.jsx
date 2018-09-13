@@ -30,6 +30,11 @@ export default (App) => {
     }) {
       const { req, res } = ctx;
 
+      // Create the apollo client and expose it within the context.
+      // This allows the "raw" client to be accessed within `getInitialProps`
+      const apollo = initApollo(apolloConfig, {}, req);
+      ctx.apollo = apollo;
+
       // Await the App's initial props.
       let appProps = {};
       if (App.getInitialProps) {
@@ -41,7 +46,7 @@ export default (App) => {
         });
       }
 
-      const apollo = initApollo(apolloConfig, {}, req);
+
       // Run all GraphQL queries in tree and extract the data.
       if (!process.browser) {
         try {
