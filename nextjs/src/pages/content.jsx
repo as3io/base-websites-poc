@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import DefaultLayout from '../layouts/Default';
 import checkContent from '../lib/check-content';
 import createMarkup from '../lib/create-markup';
+import is404 from '../lib/is-404';
 
 import contentPage from '../gql/queries/content-page.graphql';
 
@@ -19,19 +20,27 @@ const ContentPage = ({ content }) => (
 );
 
 ContentPage.getInitialProps = async (ctx) => {
-  const { query, apollo } = ctx;
+  const { query, apollo, res } = ctx;
   const { id } = query;
   const input = { id };
   const variables = { input };
 
+  try {
+    // @todo Should this be a watch query?
+    const { data } = await apollo.query({ query: contentPage, variables });
+    const { platformContent } = data;
 
-  const result = await apollo.query({ query: contentPage, variables });
-  const { data } = result;
-  const { platformContent } = data;
-
-  // Check content for internal/external redirects, etc.
-  checkContent(platformContent, ctx);
-  return { content: platformContent };
+    // Check content for internal/external redirects, etc.
+    checkContent(platformContent, ctx);
+    return { content: platformContent };
+  } catch (e) {
+    if (res) res.statusCode = 500;
+    if (is404(e)) {
+      e.code = 'ENOENT';
+      if (res) res.statusCode = 404;
+    }
+    throw e;
+  }
 };
 
 ContentPage.propTypes = {

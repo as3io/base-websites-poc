@@ -9,7 +9,7 @@ const { isArray } = Array;
  */
 const is404 = (e) => {
   if (isArray(e.graphQLErrors) && e.graphQLErrors[0] && e.graphQLErrors[0].message) {
-    return /found for ID/i.test(e.graphQLErrors[0].message);
+    return /^No [a-z]+\.[a-z]+ record found for ID/i.test(e.graphQLErrors[0].message);
   }
   return false;
 };
