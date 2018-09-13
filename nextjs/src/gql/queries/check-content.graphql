@@ -1,0 +1,6 @@
+query CheckContent($input: RootPlatformContentQueryOne!) {
+	platformContent(input: $input) {
+		id
+    redirectTo
+	}
+}
