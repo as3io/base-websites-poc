@@ -6,19 +6,19 @@ import ContentList from '../components/Content/List';
 
 import sectionPage from '../gql/queries/section-page.graphql';
 
-const SectionPage = ({ id }) => {
-  const input = { id };
+const SectionPage = ({ alias }) => {
+  const input = { alias };
   return (
     <DefaultLayout>
       <Query query={sectionPage} variables={{ input }}>
         {({ loading, error, data }) => {
           if (loading) return <span>Loading...</span>;
           if (error) return <span>{error.message}</span>;
-          const { websiteSection } = data;
+          const { websiteSectionAlias } = data;
           return (
             <section>
-              <h1>{websiteSection.name}</h1>
-              <ContentList sectionId={websiteSection.id} />
+              <h1>{websiteSectionAlias.name}</h1>
+              <ContentList sectionId={websiteSectionAlias.id} />
             </section>
           );
         }}
@@ -28,12 +28,12 @@ const SectionPage = ({ id }) => {
 };
 
 SectionPage.getInitialProps = async ({ query }) => {
-  const { id } = query;
-  return { id };
+  const { alias } = query;
+  return { alias };
 };
 
 SectionPage.propTypes = {
-  id: PropTypes.string.isRequired,
+  alias: PropTypes.string.isRequired,
 };
 
 export default SectionPage;

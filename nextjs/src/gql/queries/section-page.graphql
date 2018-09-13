@@ -1,5 +1,5 @@
-query SectionPage($input: ModelIdInput!) {
-	websiteSection(input: $input) {
+query SectionPage($input: WebsiteSectionAliasQueryInput!) {
+	websiteSectionAlias(input: $input) {
 		id
     name
     description
