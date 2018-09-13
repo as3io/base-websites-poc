@@ -8,7 +8,7 @@ query SectionQueryBlock($input: WebsiteScheduledPlatformContentQuery!) {
 					id
 					name
 					type
-          slug
+          canonicalPath
 					published
 					primarySection {
 						id

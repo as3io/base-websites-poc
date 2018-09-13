@@ -1,11 +1,12 @@
 import redirect from './redirect';
 
-export default (content, { res }) => {
+export default (content, { res, asPath }) => {
   if (res) {
-    // Run on server only.
-    const { redirectTo } = content;
+    const { redirectTo, canonicalPath } = content;
     if (redirectTo) {
       redirect(res, redirectTo);
+    } else if (canonicalPath !== asPath) {
+      redirect(res, canonicalPath);
     }
   }
 };
