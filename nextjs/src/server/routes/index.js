@@ -19,8 +19,9 @@ module.exports = (server, client) => {
    */
   server.get('/page/:alias', (req, res) => {
     const { alias } = req.params;
-    // @todo lookup content by { type: 'Page', alias }
-    res.json({ alias });
+    const actualPage = '/page';
+    const props = { alias };
+    client.render(req, res, actualPage, props);
   });
 
   /**
