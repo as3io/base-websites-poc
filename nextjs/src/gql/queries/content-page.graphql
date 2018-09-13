@@ -4,5 +4,6 @@ query ContentPage($input: RootPlatformContentQueryOne!) {
     name
     teaser
     body
+    redirectTo
 	}
 }
