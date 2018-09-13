@@ -3,11 +3,11 @@
   "primaryNavItems": [
     { "href": "/", "name": "Home" },
     { "href": "/section?alias=tactical", "name": "Tactical", "as": "/section/tactical" },
-    { "href": "/section?alias=training-careers", "name": "Training & Careers" },
-    { "href": "/section?alias=on-the-street", "name": "On The Street" },
-    { "href": "/section?alias=investigations", "name": "Investigations" },
-    { "href": "/section?alias=command-hq", "name": "Command/HQ" },
-    { "href": "/section?alias=directory", "name": "Product Guide" },
+    { "href": "/section?alias=training-careers", "name": "Training & Careers", "as": "/section/training-careers" },
+    { "href": "/section?alias=on-the-street", "name": "On The Street", "as": "/section/on-the-street" },
+    { "href": "/section?alias=investigations", "name": "Investigations", "as": "/section/investigations" },
+    { "href": "/section?alias=command-hq", "name": "Command/HQ", "as": "/section/command-hq" },
+    { "href": "/section?alias=directory", "name": "Product Guide", "as": "/section/directory" },
     { "href": "https://forum.officer.com", "name": "Forums" }
   ]
 }
