@@ -38,26 +38,11 @@ module.exports = (server, client) => {
   });
 
   /**
-   * Root 8-digit content ID routing.
+   * Content routing.
+   * Matches any path that contains an 8-digit ID anywhere within it.
    *
-   * Examples:
-   * `/21020171`
    */
-  server.get('/:id(\\d{8})', (req, res) => {
-    const { id } = req.params;
-    const actualPage = '/content';
-    const props = { id };
-    client.render(req, res, actualPage, props);
-  });
-
-  /**
-   * Content routing (with section prefix).
-   *
-   * Examples:
-   * `/parent-section-name/press-release/21020171/the-content-slug`
-   * `/parent-section-name/child-section-name/press-release/21020171/the-content-slug`
-   */
-  server.get('/*/:type/:id(\\d{8})/:slug', (req, res) => {
+  server.get('/:prefix(*):id(\\d{8}):suffx(*)', (req, res) => {
     const { id } = req.params;
     const actualPage = '/content';
     const props = { id };
