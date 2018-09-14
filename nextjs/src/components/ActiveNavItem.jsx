@@ -12,12 +12,15 @@ const ActiveNavItem = ({
   title,
 }) => {
   const navItemPath = as || href;
+  const stripped = navItemPath.replace(/^\/section/, '');
+
   let isActive = false;
   if (navItemPath === router.asPath) {
     isActive = true;
-  } else {
-    const stripped = navItemPath.replace(/^\/section/, '');
-    isActive = stripped !== '/' && (new RegExp(`^${stripped}`)).test(router.asPath);
+  } else if (stripped !== '/' && (new RegExp(`^${stripped}`)).test(router.asPath)) {
+    isActive = true;
+  } else if (navItemPath.indexOf('/section') === 0 && (new RegExp(`^${navItemPath}`)).test(router.asPath)) {
+    isActive = true;
   }
 
   return (
