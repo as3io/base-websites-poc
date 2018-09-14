@@ -11,7 +11,15 @@ const ActiveNavItem = ({
   as,
   title,
 }) => {
-  const isActive = router.pathname === href;
+  const navItemPath = as || href;
+  let isActive = false;
+  if (navItemPath === router.asPath) {
+    isActive = true;
+  } else {
+    const stripped = navItemPath.replace(/^\/section/, '');
+    isActive = stripped !== '/' && (new RegExp(`^${stripped}`)).test(router.asPath);
+  }
+
   return (
     <NavItem active={isActive}>
       <Link href={href} as={as} passHref>
