@@ -5,8 +5,7 @@ import fetch from 'isomorphic-unfetch';
 
 export default (req) => {
   const headers = req ? req.headers : {};
-  const protocol = process.env.NODE_ENV === 'production' ? 'https' : 'http';
-  const uri = (req) ? `${protocol}://${req.get('host')}` : '';
+  const uri = (req) ? `${req.protocol}://${req.get('host')}` : '';
 
   return {
     link: ApolloLink.from([
