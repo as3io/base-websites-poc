@@ -5,4 +5,8 @@ query SectionPage($input: WebsiteSectionAliasQueryInput!) {
     description
     seoTitle
 	}
+  websiteSectionRedirect(input: $input) {
+		id
+    alias
+	}
 }

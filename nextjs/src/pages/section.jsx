@@ -2,7 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import DefaultLayout from '../layouts/Default';
 import ContentList from '../components/Content/List';
-import is404 from '../lib/is-404';
+import redirect from '../lib/redirect';
+import errors from '../lib/errors';
 
 import sectionPage from '../gql/queries/section-page.graphql';
 
@@ -21,19 +22,18 @@ SectionPage.getInitialProps = async (ctx) => {
   const input = { alias };
   const variables = { input };
 
-  try {
-    // @todo Should this be a watch query?
-    const { data } = await apollo.query({ query: sectionPage, variables });
-    const { websiteSectionAlias } = data;
+  // @todo Should this be a watch query?
+  // @todo Do we still need try/catch?
+  const { data } = await apollo.query({ query: sectionPage, variables });
+  const { websiteSectionAlias, websiteSectionRedirect } = data;
+  if (websiteSectionAlias) {
     return { section: websiteSectionAlias };
-  } catch (e) {
-    if (res) res.statusCode = 500;
-    if (is404(e)) {
-      e.code = 'ENOENT';
-      if (res) res.statusCode = 404;
-    }
-    throw e;
   }
+  if (websiteSectionRedirect && websiteSectionRedirect.alias) {
+    redirect(res, `/section?alias=${websiteSectionRedirect.alias}`, `/section/${websiteSectionRedirect.alias}`);
+    return {};
+  }
+  throw errors.notFound();
 };
 
 SectionPage.propTypes = {
