@@ -22,4 +22,6 @@
 - CSS _should_ be compiled into a single, minified file, but should not block the page render
 - Images should display when in-view, be responsive, and properly handle DPR (e.g. using `<picture>` and/or `<img srcset="">`)
 - Enable GraphQL APQ (automatic persisted queries) and explore CDN caching (also, enable gzipping for responses)
-
+- Google Search Console data structures for pages
+- AMP Support (?)
+- RSS/Atom Support (?)
