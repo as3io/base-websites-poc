@@ -20,7 +20,7 @@ const ContentListItem = ({
       </Link>
     </CardTitle>
     <CardText>
-      <SectionTag className="mr-2" sectionId={primarySection.id}>
+      <SectionTag className="mr-2" alias={primarySection.alias}>
         {primarySection.name}
       </SectionTag>
       <PublishedDate value={published} />
