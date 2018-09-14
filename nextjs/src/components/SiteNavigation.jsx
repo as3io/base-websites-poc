@@ -1,14 +1,20 @@
 import React from 'react';
 import Link from 'next/link';
 import { Navbar, NavbarBrand, Nav } from 'reactstrap';
-import { siteName, primaryNavItems } from '../site-config.json';
+import { siteName, primaryNavItems, siteLogo } from '../site-config.json';
 
 import Item from './ActiveNavItem';
 
 const SiteNavigation = () => (
-  <Navbar color="primary" dark expand>
+  <Navbar color="dark" dark expand>
     <Link href="/" passHref>
-      <NavbarBrand>{siteName}</NavbarBrand>
+      <NavbarBrand>
+        {siteLogo && siteLogo.length ? (
+          <img src={siteLogo} alt={siteName} title={siteName} height={25} />
+        ) : (
+          siteName
+        )}
+      </NavbarBrand>
     </Link>
     <Nav className="mr-auto" navbar>
       {primaryNavItems

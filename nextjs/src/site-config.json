@@ -1,5 +1,6 @@
 {
   "siteName": "Officer.com",
+  "siteLogo": "https://cdn.officer.com/files/base/cygnus/ofcr/image/static/logo/site_logo.png",
   "primaryNavItems": [
     { "href": "/", "name": "Home" },
     { "href": "/section?alias=tactical", "name": "Tactical", "as": "/section/tactical" },
