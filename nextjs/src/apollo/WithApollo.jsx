@@ -48,7 +48,8 @@ export default (App) => {
 
 
       // Run all GraphQL queries in tree and extract the data.
-      if (!process.browser) {
+      // All run on the server and if headers have not been sent (e.g. the response is redirecting).
+      if (!process.browser && !res.headersSent) {
         try {
           // Run queries in the tree.
           await getDataFromTree(<App
