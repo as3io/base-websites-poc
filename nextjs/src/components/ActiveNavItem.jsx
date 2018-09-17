@@ -41,7 +41,7 @@ ActiveNavItem.propTypes = {
     PropTypes.node,
   ]).isRequired,
   router: PropTypes.shape({
-    pathname: PropTypes.string.isRequired,
+    asPath: PropTypes.string.isRequired,
   }).isRequired,
 };
 

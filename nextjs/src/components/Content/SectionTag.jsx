@@ -27,7 +27,7 @@ SectionTag.propTypes = {
   alias: PropTypes.string.isRequired,
   children: PropTypes.node.isRequired,
   router: PropTypes.shape({
-    pathname: PropTypes.string.isRequired,
+    asPath: PropTypes.string.isRequired,
   }).isRequired,
 };
 
