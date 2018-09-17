@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import {
   Card,
   CardBody,
-  CardText,
 } from 'reactstrap';
 
 import DateElement from '../../Elements/Date';
@@ -36,17 +35,13 @@ const ContentCardHero = ({
         contentId={id}
         asPath={canonicalPath}
       />
-
-      {/* eslint-disable-next-line react/no-danger */}
       <HTMLElement tag="p" className="card-text" html={teaser} />
-      <CardText>
-        <small>
-          <ContentSectionLink className="mr-2" sectionAlias={primarySection.alias}>
-            {primarySection.name}
-          </ContentSectionLink>
-          <DateElement value={published} />
-        </small>
-      </CardText>
+      <small className="card-text">
+        <ContentSectionLink className="mr-2" sectionAlias={primarySection.alias}>
+          {primarySection.name}
+        </ContentSectionLink>
+        <DateElement value={published} />
+      </small>
     </CardBody>
   </Card>
 );
