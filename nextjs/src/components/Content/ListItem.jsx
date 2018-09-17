@@ -9,6 +9,7 @@ import SectionTag from './SectionTag';
 const ContentListItem = ({
   id,
   name,
+  shortName,
   canonicalPath,
   primarySection,
   published,
@@ -16,7 +17,7 @@ const ContentListItem = ({
   <CardBody>
     <CardTitle>
       <Link href={`/content?id=${id}`} as={canonicalPath}>
-        <a>{name}</a>
+        <a>{shortName || name}</a>
       </Link>
     </CardTitle>
     <CardText>
@@ -31,6 +32,7 @@ const ContentListItem = ({
 ContentListItem.propTypes = {
   id: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
+  shortName: PropTypes.string,
   canonicalPath: PropTypes.string.isRequired,
   published: PropTypes.number,
   primarySection: PropTypes.shape({
@@ -42,6 +44,7 @@ ContentListItem.propTypes = {
 
 ContentListItem.defaultProps = {
   published: null,
+  shortName: '',
 };
 
 export default ContentListItem;
