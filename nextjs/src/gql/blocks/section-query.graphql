@@ -1,4 +1,4 @@
-query SectionQueryBlock($input: WebsiteScheduledPlatformContentQuery!) {
+query SectionQueryBlock($input: WebsiteScheduledPlatformContentQuery!, $imageInput: PlatformAssetImageSrcInput!) {
 	websiteScheduledPlatformContent(input: $input) {
 		edges {
 			cursor
@@ -8,9 +8,15 @@ query SectionQueryBlock($input: WebsiteScheduledPlatformContentQuery!) {
 					id
 					name
 					shortName
+					teaser
 					type
           canonicalPath
 					published
+					primaryImage {
+						id
+						src(input: $imageInput)
+						alt
+					}
 					primarySection {
 						id
 						name

@@ -8,13 +8,20 @@ const SectionQuery = ({
   sectionId,
   first,
   after,
+  requiresImage,
   children,
 }) => {
   const pagination = { first, after };
-  const input = { sectionId, pagination, sectionBubbling: true };
+  const input = {
+    sectionId,
+    pagination,
+    sectionBubbling: true,
+    requiresImage,
+  };
+  const imageInput = { host: 'cdn.officer.com' };
   return (
     <>
-      <Query query={query} variables={{ input }}>
+      <Query query={query} variables={{ input, imageInput }}>
         {({ loading, error, data }) => (children({ loading, error, data }))}
       </Query>
     </>
@@ -23,6 +30,7 @@ const SectionQuery = ({
 
 SectionQuery.defaultProps = {
   after: null,
+  requiresImage: false,
   children: () => {},
   first: 5,
 };
@@ -32,6 +40,7 @@ SectionQuery.propTypes = {
   after: PropTypes.string,
   children: PropTypes.func,
   first: PropTypes.number,
+  requiresImage: PropTypes.bool,
 };
 
 export default SectionQuery;

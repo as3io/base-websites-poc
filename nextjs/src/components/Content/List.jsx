@@ -4,10 +4,11 @@ import { Card } from 'reactstrap';
 
 import SectionQuery from '../SectionQuery';
 import ContentListItem from './ListItem';
+import ContentCardHero from './Card/Hero';
 
 const ContentList = ({ sectionId }) => (
   <Card>
-    <SectionQuery sectionId={sectionId} first={10}>
+    <SectionQuery sectionId={sectionId} first={10} requiresImage>
       {({ loading, error, data }) => {
         if (loading) return <span>Loading...</span>;
         if (error) {
@@ -22,9 +23,12 @@ const ContentList = ({ sectionId }) => (
         const scheduled = data.websiteScheduledPlatformContent;
         return (
           <div>
-            {scheduled.edges.map((edge) => {
+            {scheduled.edges.map((edge, index) => {
               const { node } = edge;
               const { content } = node;
+              if (index === 0) {
+                return <ContentCardHero key={content.id} {...content} />;
+              }
               return <ContentListItem key={content.id} {...content} />;
             })}
           </div>
