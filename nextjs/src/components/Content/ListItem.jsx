@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Link from 'next/link';
 import { CardBody, CardTitle, CardText } from 'reactstrap';
 
+import ContentLink from './Link';
 import PublishedDate from './PublishedDate';
 import SectionTag from './SectionTag';
 
@@ -16,9 +16,9 @@ const ContentListItem = ({
 }) => (
   <CardBody>
     <CardTitle>
-      <Link href={`/content?id=${id}`} as={canonicalPath}>
-        <a>{shortName || name}</a>
-      </Link>
+      <ContentLink id={id} canonicalPath={canonicalPath}>
+        {shortName || name}
+      </ContentLink>
     </CardTitle>
     <CardText>
       <SectionTag className="mr-2" alias={primarySection.alias}>
