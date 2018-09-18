@@ -1,5 +1,5 @@
 import redirect from './redirect';
-import { contentHref } from './content-paths';
+import contentHref from './content-paths';
 
 /**
  * @param {object} content The content object from GraphQL.
