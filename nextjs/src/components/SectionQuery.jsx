@@ -5,19 +5,25 @@ import { Query } from 'react-apollo';
 import query from '../gql/blocks/section-query.graphql';
 
 const SectionQuery = ({
-  sectionId,
-  first,
   after,
-  requiresImage,
   children,
+  excludeContentTypes,
+  first,
+  includeContentTypes,
+  requiresImage,
+  sectionBubbling,
+  sectionId,
 }) => {
   const pagination = { first, after };
   const input = {
-    sectionId,
     pagination,
-    sectionBubbling: true,
+    excludeContentTypes,
+    includeContentTypes,
     requiresImage,
+    sectionBubbling,
+    sectionId,
   };
+  // @todo The CDN host should be determined by GraphQL.
   const imageInput = { host: 'cdn.officer.com' };
   return (
     <>
@@ -30,17 +36,23 @@ const SectionQuery = ({
 
 SectionQuery.defaultProps = {
   after: null,
-  requiresImage: false,
   children: () => {},
+  excludeContentTypes: [],
   first: 5,
+  includeContentTypes: [],
+  requiresImage: false,
+  sectionBubbling: true,
 };
 
 SectionQuery.propTypes = {
-  sectionId: PropTypes.number.isRequired,
   after: PropTypes.string,
   children: PropTypes.func,
+  excludeContentTypes: PropTypes.arrayOf(PropTypes.string),
   first: PropTypes.number,
+  includeContentTypes: PropTypes.arrayOf(PropTypes.string),
   requiresImage: PropTypes.bool,
+  sectionBubbling: PropTypes.bool,
+  sectionId: PropTypes.number.isRequired,
 };
 
 export default SectionQuery;
