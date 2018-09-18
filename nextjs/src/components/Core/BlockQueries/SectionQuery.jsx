@@ -1,14 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Query } from 'react-apollo';
+import gql from 'graphql-tag';
 
-import query from '../gql/blocks/section-query.graphql';
-
+/**
+ *
+ * @todo Determine if a regular vs. simply query block even makes sense.
+ * @todo Eventually these may need to be merged and/or GraphQL should provide
+ *       a "special" endpoint for handling these queries. This will especially
+ *       be true once the concept of "flows" are implemented.
+ */
 const SectionQuery = ({
   after,
   children,
   excludeContentTypes,
   first,
+  fields,
   includeContentTypes,
   requiresImage,
   sectionBubbling,
@@ -23,11 +30,24 @@ const SectionQuery = ({
     sectionBubbling,
     sectionId,
   };
-  // @todo The CDN host should be determined by GraphQL.
-  const imageInput = { host: 'cdn.officer.com' };
+
+  const query = gql`
+    query SectionQueryBlock($input: WebsiteScheduledPlatformContentQuery!) {
+      websiteScheduledPlatformContent(input: $input) {
+        edges {
+          node {
+            id
+            content {
+              ${fields}
+            }
+          }
+        }
+      }
+    }
+  `;
   return (
     <>
-      <Query query={query} variables={{ input, imageInput }}>
+      <Query query={query} variables={{ input }}>
         {({ loading, error, data }) => (children({ loading, error, data }))}
       </Query>
     </>
@@ -48,6 +68,7 @@ SectionQuery.propTypes = {
   after: PropTypes.string,
   children: PropTypes.func,
   excludeContentTypes: PropTypes.arrayOf(PropTypes.string),
+  fields: PropTypes.string.isRequired,
   first: PropTypes.number,
   includeContentTypes: PropTypes.arrayOf(PropTypes.string),
   requiresImage: PropTypes.bool,

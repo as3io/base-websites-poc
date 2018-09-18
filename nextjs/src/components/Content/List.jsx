@@ -1,15 +1,34 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import SectionQuery from '../SectionQuery';
-import ContentCardHero from './Card/Hero';
-import ContentTitle from '../Elements/Content/Title';
-import ContentSectionLink from '../Elements/Content/SectionLink';
-import DateElement from '../Elements/Date';
+import ListItem from '../ListItems/Content/SectionLinkTitle';
+
+import SectionQuerySimple from '../Core/BlockQueries/SectionQuerySimple';
+import ContentCardStandard from '../Templates/Content/Card/Standard';
+
+const fields = `
+  id
+  name
+  shortName
+  teaser
+  type
+  canonicalPath
+  published
+  primaryImage {
+    id
+    src(input: { host: "cdn.officer.com" })
+    alt
+  }
+  primarySection {
+    id
+    name
+    alias
+  }
+`;
 
 const ContentList = ({ sectionId }) => (
-  <SectionQuery sectionId={sectionId} first={7} requiresImage>
-    {({ loading, error, data }) => {
+  <SectionQuerySimple sectionId={sectionId} fields={fields} first={7} requiresImage includeContentTypes={['Product']}>
+    {({ loading, error, items }) => {
       if (loading) return <span>Loading...</span>;
       if (error) {
         return (
@@ -20,43 +39,20 @@ const ContentList = ({ sectionId }) => (
           </span>
         );
       }
-      const scheduled = data.websiteScheduledPlatformContent;
-      const heroEdge = scheduled.edges[0];
+      const hero = items[0];
+      if (!hero) return null;
       return (
         <div className="row">
           <div className="col-lg-8">
-            <ContentCardHero {...heroEdge.node.content} />
+            <ContentCardStandard content={hero} />
           </div>
           <div className="col-lg-4">
             <div className="card">
               <div className="list-group list-group-flush">
-                {scheduled.edges.map((edge, index) => {
+                {items.map((content, index) => {
                   if (index === 0) return null;
-                  const { node } = edge;
-                  const { content } = node;
-                  const {
-                    id,
-                    shortName,
-                    canonicalPath,
-                    published,
-                    primarySection,
-                  } = content;
                   return (
-                    <div key={content.id} className="list-group-item">
-                      <ContentTitle
-                        title={shortName}
-                        tag="h5"
-                        className="card-title"
-                        contentId={id}
-                        asPath={canonicalPath}
-                      />
-                      <small className="card-text">
-                        <ContentSectionLink className="mr-2" sectionAlias={primarySection.alias}>
-                          {primarySection.name}
-                        </ContentSectionLink>
-                        <DateElement value={published} />
-                      </small>
-                    </div>
+                    <ListItem key={content.id} {...content} />
                   );
                 })}
               </div>
@@ -65,7 +61,7 @@ const ContentList = ({ sectionId }) => (
         </div>
       );
     }}
-  </SectionQuery>
+  </SectionQuerySimple>
 );
 
 ContentList.propTypes = {
