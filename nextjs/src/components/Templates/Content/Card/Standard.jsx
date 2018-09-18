@@ -3,10 +3,11 @@ import PropTypes from 'prop-types';
 
 import Link from '../../../Core/Elements/Content/Link';
 import Title from '../../../Core/Elements/Content/Title';
+import DateElement from '../../../Core/Elements/Date';
+import SectionLink from '../../../Core/Elements/Content/SectionLink';
 import HTML from '../../../Core/Elements/HTML';
-import SectionLinkWithDate from '../../../Core/Elements/Content/SectionLinkWithDate';
 
-const ContentCardStandard = ({ content, publishedDateFormat }) => {
+const ContentCardStandard = ({ content, dateFormat }) => {
   const {
     id,
     canonicalPath,
@@ -35,15 +36,12 @@ const ContentCardStandard = ({ content, publishedDateFormat }) => {
           asPath={canonicalPath}
         />
         <HTML tag="p" className="card-text" html={teaser} />
-        <SectionLinkWithDate
-          className="card-text"
-          sectionLinkClassName="mr-2"
-          sectionAlias={sectionAlias}
-          date={published}
-          dateFormat={publishedDateFormat}
-        >
-          {sectionName}
-        </SectionLinkWithDate>
+        <small className="card-text">
+          <SectionLink className="mr-2" sectionAlias={sectionAlias}>
+            {sectionName}
+          </SectionLink>
+          <DateElement value={published} dateFormat={dateFormat} />
+        </small>
       </div>
     </div>
   );
@@ -58,12 +56,12 @@ ContentCardStandard.propTypes = {
       alt: PropTypes.string,
     }),
   }),
-  publishedDateFormat: PropTypes.string,
+  dateFormat: PropTypes.string,
 };
 
 ContentCardStandard.defaultProps = {
   content: {},
-  publishedDateFormat: null,
+  dateFormat: null,
 };
 
 export default ContentCardStandard;
