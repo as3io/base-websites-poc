@@ -2,16 +2,17 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Link from '../../../Core/Elements/Content/Link';
-import Title from '../../../Core/Elements/Content/Title';
+import Title from '../Elements/Title';
+import Teaser from '../Elements/Teaser';
 import DateElement from '../../../Core/Elements/Date';
 import SectionLink from '../../../Core/Elements/Content/SectionLink';
-import HTML from '../../../Core/Elements/HTML';
 
 const ContentCardStandard = ({
   className,
   content,
   dateFormat,
   overlay,
+  tag: Tag,
 }) => {
   const {
     canonicalPath,
@@ -20,21 +21,13 @@ const ContentCardStandard = ({
     primaryImage,
     primarySection,
     published,
-    shortName,
-    teaser,
   } = content;
   const { src, alt } = primaryImage || {};
   const { name: sectionName, alias: sectionAlias } = primarySection || {};
 
   const contents = (
     <>
-      <Title
-        title={shortName}
-        tag="h5"
-        className="card-title"
-        contentId={id}
-        asPath={canonicalPath}
-      />
+      <Title {...content} className="card-title" />
       {company && company.id && (
         <p className="card-text">
           <Link contentId={company.id} asPath={company.canonicalPath}>
@@ -42,7 +35,7 @@ const ContentCardStandard = ({
           </Link>
         </p>
       )}
-      <HTML tag="p" className="card-text" html={teaser} />
+      <Teaser {...content} className="card-text" />
       <small className="card-text">
         <SectionLink className="mr-2" sectionAlias={sectionAlias}>
           {sectionName}
@@ -64,14 +57,14 @@ const ContentCardStandard = ({
 
   const classNames = className ? `card ${className}` : 'card';
   return (
-    <div className={classNames}>
+    <Tag className={classNames}>
       {primaryImage && primaryImage.src && (
         <Link className="embed-responsive embed-responsive-16by9" contentId={id} asPath={canonicalPath}>
           <img className="card-img-top img-fluid embed-responsive-item" src={src} alt={alt} />
         </Link>
       )}
       {elements}
-    </div>
+    </Tag>
   );
 };
 
@@ -87,6 +80,7 @@ ContentCardStandard.propTypes = {
   }),
   dateFormat: PropTypes.string,
   overlay: PropTypes.bool,
+  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
 };
 
 ContentCardStandard.defaultProps = {
@@ -94,6 +88,7 @@ ContentCardStandard.defaultProps = {
   content: {},
   dateFormat: null,
   overlay: false,
+  tag: 'div',
 };
 
 export default ContentCardStandard;
