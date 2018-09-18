@@ -4,6 +4,7 @@ import DefaultLayout from '../layouts/Default';
 import ContentList from '../components/Content/List';
 import redirect from '../lib/redirect';
 import errors from '../lib/errors';
+import { sectionAsPath, sectionHref } from '../lib/section-paths';
 
 import sectionPage from '../gql/queries/section-page.graphql';
 
@@ -30,7 +31,8 @@ SectionPage.getInitialProps = async (ctx) => {
     return { section: websiteSectionAlias };
   }
   if (websiteSectionRedirect && websiteSectionRedirect.alias) {
-    redirect(res, `/section?alias=${websiteSectionRedirect.alias}`, `/section/${websiteSectionRedirect.alias}`);
+    const { alias: redirectAlias } = websiteSectionRedirect;
+    redirect(res, sectionHref(redirectAlias), sectionAsPath(redirectAlias));
     return {};
   }
   throw errors.notFound();

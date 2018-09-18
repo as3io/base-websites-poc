@@ -1,4 +1,5 @@
 import redirect from './redirect';
+import { contentHref } from './content-paths';
 
 /**
  * @param {object} content The content object from GraphQL.
@@ -13,7 +14,7 @@ export default (content, { res, asPath }) => {
     return true;
   }
   if (canonicalPath !== asPath) {
-    redirect(res, `/content?id=${id}`, canonicalPath);
+    redirect(res, contentHref(id), canonicalPath);
     return true;
   }
   return false;
