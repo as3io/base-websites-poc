@@ -9,6 +9,7 @@ const SectionLinkWithDate = ({
   className,
   date,
   dateClassName,
+  dateFormat,
   sectionAlias,
   sectionLinkClassName,
   tag: Tag,
@@ -17,7 +18,7 @@ const SectionLinkWithDate = ({
     <SectionLink className={sectionLinkClassName} sectionAlias={sectionAlias}>
       {children}
     </SectionLink>
-    <DateElement class={dateClassName} value={date} />
+    <DateElement class={dateClassName} value={date} dateFormat={dateFormat} />
   </Tag>
 );
 
@@ -27,6 +28,7 @@ SectionLinkWithDate.propTypes = {
   className: PropTypes.string,
   date: PropTypes.number,
   dateClassName: PropTypes.string,
+  dateFormat: PropTypes.string,
   sectionAlias: PropTypes.string,
   sectionLinkClassName: PropTypes.string,
 };
@@ -35,6 +37,7 @@ SectionLinkWithDate.defaultProps = {
   children: null,
   className: null,
   date: null,
+  dateFormat: null,
   dateClassName: null,
   sectionAlias: null,
   sectionLinkClassName: null,
