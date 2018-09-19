@@ -5,8 +5,8 @@ import Link from '../../../Core/Elements/Content/Link';
 import Title from '../Elements/Title';
 import Teaser from '../Elements/Teaser';
 import CompanyLink from '../Elements/CompanyLink';
+import PrimarySectionLink from '../Elements/PrimarySectionLink';
 import DateElement from '../../../Core/Elements/Date';
-import SectionLink from '../../../Core/Elements/Content/SectionLink';
 
 const ContentCardStandard = ({
   className,
@@ -19,11 +19,9 @@ const ContentCardStandard = ({
     canonicalPath,
     id,
     primaryImage,
-    primarySection,
     published,
   } = content;
   const { src, alt } = primaryImage || {};
-  const { name: sectionName, alias: sectionAlias } = primarySection || {};
 
   const contents = (
     <>
@@ -31,9 +29,7 @@ const ContentCardStandard = ({
       <CompanyLink {...content} className="card-text" />
       <Teaser {...content} className="card-text" />
       <small className="card-text">
-        <SectionLink className="mr-2" sectionAlias={sectionAlias}>
-          {sectionName}
-        </SectionLink>
+        <PrimarySectionLink {...content} className="mr-2" />
         <DateElement value={published} dateFormat={dateFormat} />
       </small>
     </>
