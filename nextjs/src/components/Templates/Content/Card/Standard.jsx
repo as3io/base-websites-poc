@@ -7,6 +7,7 @@ import Teaser from '../Elements/Teaser';
 import CompanyLink from '../Elements/CompanyLink';
 import PrimarySectionLink from '../Elements/PrimarySectionLink';
 import PublishedDate from '../Elements/PublishedDate';
+import AuthorsLink from '../Elements/AuthorsLink';
 
 const ContentCardStandard = ({
   className,
@@ -28,6 +29,7 @@ const ContentCardStandard = ({
       <Teaser {...content} className="card-text" />
       <small className="card-text">
         <PrimarySectionLink {...content} className="mr-2" />
+        <AuthorsLink {...content} className="mr-2" />
         <PublishedDate {...content} />
       </small>
     </>
