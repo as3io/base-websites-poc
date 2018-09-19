@@ -1,28 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import CoreTitleElement from '../../../Core/Elements/Content/Title';
+import CoreTitle from '../../../Core/Elements/Content/Title';
 
-const CLASS_NAME = 'content__title';
+const BEM = 'content__title';
 
-const ContentElementTitle = ({
-  className,
-  canonicalPath,
-  id,
-  shortName,
-  tag,
-}) => (
-  <CoreTitleElement
-    title={shortName}
-    tag={tag}
-    linkClassName="content__link"
-    className={className ? `${CLASS_NAME} ${className}` : CLASS_NAME}
-    contentId={id}
-    asPath={canonicalPath}
-  />
-);
+const displayName = 'Templates/Content/Elements/Title';
 
-ContentElementTitle.propTypes = {
+const propTypes = {
   className: PropTypes.string,
   canonicalPath: PropTypes.string.isRequired,
   id: PropTypes.number.isRequired,
@@ -30,9 +15,30 @@ ContentElementTitle.propTypes = {
   tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
 };
 
-ContentElementTitle.defaultProps = {
+const defaultProps = {
   className: null,
   tag: 'h5',
 };
 
-export default ContentElementTitle;
+const Title = ({
+  className,
+  canonicalPath,
+  id,
+  shortName,
+  tag,
+}) => (
+  <CoreTitle
+    title={shortName}
+    tag={tag}
+    linkClassName="content__link"
+    className={className ? `${BEM} ${className}` : BEM}
+    contentId={id}
+    asPath={canonicalPath}
+  />
+);
+
+Title.displayName = displayName;
+Title.propTypes = propTypes;
+Title.defaultProps = defaultProps;
+
+export default Title;

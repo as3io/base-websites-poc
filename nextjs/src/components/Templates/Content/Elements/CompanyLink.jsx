@@ -1,9 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import CoreLinkElement from '../../../Core/Elements/Content/Link';
+import CoreLink from '../../../Core/Elements/Content/Link';
 
-const CLASS_NAME = 'content__company';
+const BEM = 'content__company';
+
+const displayName = 'Templates/Content/Elements/CompanyLink';
 
 const propTypes = {
   children: PropTypes.node,
@@ -23,7 +25,7 @@ const defaultProps = {
   tag: 'p',
 };
 
-const ContentElementCompanyLink = ({
+const CompanyLink = ({
   children,
   className,
   company,
@@ -31,15 +33,16 @@ const ContentElementCompanyLink = ({
 }) => {
   const { id, canonicalPath, name } = company || {};
   return id && canonicalPath ? (
-    <Tag className={className ? `${CLASS_NAME} ${className}` : CLASS_NAME}>
-      <CoreLinkElement className="content__link" contentId={id} asPath={canonicalPath}>
+    <Tag className={className ? `${BEM} ${className}` : BEM}>
+      <CoreLink className="content__link" contentId={id} asPath={canonicalPath}>
         {children || name}
-      </CoreLinkElement>
+      </CoreLink>
     </Tag>
   ) : null;
 };
 
-ContentElementCompanyLink.propTypes = propTypes;
-ContentElementCompanyLink.defaultProps = defaultProps;
+CompanyLink.displayName = displayName;
+CompanyLink.propTypes = propTypes;
+CompanyLink.defaultProps = defaultProps;
 
-export default ContentElementCompanyLink;
+export default CompanyLink;

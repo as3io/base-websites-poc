@@ -1,9 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import CoreSectionLinkElement from '../../../Core/Elements/Content/SectionLink';
+import CoreSectionLink from '../../../Core/Elements/Content/SectionLink';
 
-const CLASS_NAME = 'content__section';
+const BEM = 'content__primary-section';
+
+const displayName = 'Templates/Content/Elements/PrimarySectionLink';
 
 const propTypes = {
   children: PropTypes.node,
@@ -20,23 +22,24 @@ const defaultProps = {
   primarySection: {},
 };
 
-const ContentElementPrimarySectionLink = ({
+const PrimarySectionLink = ({
   children,
   className,
   primarySection,
 }) => {
   const { name, alias } = primarySection || {};
   return (
-    <CoreSectionLinkElement
-      className={className ? `${CLASS_NAME} ${className}` : CLASS_NAME}
+    <CoreSectionLink
+      className={className ? `${BEM} ${className}` : BEM}
       sectionAlias={alias}
     >
       {children || name}
-    </CoreSectionLinkElement>
+    </CoreSectionLink>
   );
 };
 
-ContentElementPrimarySectionLink.propTypes = propTypes;
-ContentElementPrimarySectionLink.defaultProps = defaultProps;
+PrimarySectionLink.displayName = displayName;
+PrimarySectionLink.propTypes = propTypes;
+PrimarySectionLink.defaultProps = defaultProps;
 
-export default ContentElementPrimarySectionLink;
+export default PrimarySectionLink;
