@@ -1,5 +1,6 @@
 import { ApolloClient } from 'apollo-client';
 import { InMemoryCache } from 'apollo-cache-inmemory';
+import fragmentMatcher from './fragment-matcher';
 
 // The client-side apollo client.
 // Will be initialized once.
@@ -7,26 +8,19 @@ let apolloClient;
 
 const { NODE_ENV } = process.env;
 
-const createDefaultCache = () => new InMemoryCache();
-
 const create = (apolloConfig, initialState) => {
   const isBrowser = process.browser;
-
-  // Allow for custom cache creation. Will default to `InMemoryCache`.
-  const createCache = apolloConfig.createCache || createDefaultCache;
 
   const config = {
     // Spread/apply the passed config properties.
     ...apolloConfig,
+    // Create cache and restore from initial state.
+    cache: (new InMemoryCache({ fragmentMatcher })).restore(initialState || {}),
     // Only allow dev tools if on a non-production browser.
     connectToDevTools: isBrowser && NODE_ENV !== 'production',
     // Enable SSR mode if running on the server.
     ssrMode: !isBrowser,
-    // Create cache and restore from initial state.
-    cache: createCache().restore(initialState || {}),
   };
-  delete config.createCache;
-
   return new ApolloClient(config);
 };
 
