@@ -16,7 +16,7 @@ const propTypes = {
 
 const defaultProps = {
   className: null,
-  format: null,
+  format: undefined,
   published: null,
   tag: 'span',
 };
