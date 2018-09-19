@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import CoreTitle from '../../../Core/Elements/Content/Title';
 
-const BEM = 'content__title';
+const BEM = 'content__short-name';
 
 const displayName = 'Templates/Content/Elements/Title';
 
@@ -20,7 +20,7 @@ const defaultProps = {
   tag: 'h5',
 };
 
-const Title = ({
+const ShortName = ({
   className,
   canonicalPath,
   id,
@@ -37,8 +37,8 @@ const Title = ({
   />
 ) : null);
 
-Title.displayName = displayName;
-Title.propTypes = propTypes;
-Title.defaultProps = defaultProps;
+ShortName.displayName = displayName;
+ShortName.propTypes = propTypes;
+ShortName.defaultProps = defaultProps;
 
-export default Title;
+export default ShortName;

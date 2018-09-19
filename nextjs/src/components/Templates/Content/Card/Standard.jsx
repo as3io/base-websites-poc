@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Link from '../../../Core/Elements/Content/Link';
-import Title from '../Elements/Title';
+import ShortName from '../Elements/ShortName';
 import Teaser from '../Elements/Teaser';
 import CompanyLink from '../Elements/CompanyLink';
 import PrimarySectionLink from '../Elements/PrimarySectionLink';
@@ -23,7 +23,7 @@ const ContentCardStandard = ({
 
   const contents = (
     <>
-      <Title {...content} className="card-title" />
+      <ShortName {...content} className="card-title" />
       <CompanyLink {...content} className="card-text" />
       <Teaser {...content} className="card-text" />
       <small className="card-text">
