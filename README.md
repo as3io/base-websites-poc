@@ -25,3 +25,4 @@
 - Google Search Console data structures for pages
 - AMP Support (?)
 - RSS/Atom Support (?)
+- Semantic HTML Elements (e.g. `<article>`, `<main>`, `<section>`, etc)
