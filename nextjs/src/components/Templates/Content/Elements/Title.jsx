@@ -26,7 +26,7 @@ const Title = ({
   id,
   shortName,
   tag,
-}) => (
+}) => (shortName ? (
   <CoreTitle
     title={shortName}
     tag={tag}
@@ -35,7 +35,7 @@ const Title = ({
     contentId={id}
     asPath={canonicalPath}
   />
-);
+) : null);
 
 Title.displayName = displayName;
 Title.propTypes = propTypes;
