@@ -6,12 +6,11 @@ import Title from '../Elements/Title';
 import Teaser from '../Elements/Teaser';
 import CompanyLink from '../Elements/CompanyLink';
 import PrimarySectionLink from '../Elements/PrimarySectionLink';
-import DateElement from '../../../Core/Elements/Date';
+import PublishedDate from '../Elements/PublishedDate';
 
 const ContentCardStandard = ({
   className,
   content,
-  dateFormat,
   overlay,
   tag: Tag,
 }) => {
@@ -19,7 +18,6 @@ const ContentCardStandard = ({
     canonicalPath,
     id,
     primaryImage,
-    published,
   } = content;
   const { src, alt } = primaryImage || {};
 
@@ -30,7 +28,7 @@ const ContentCardStandard = ({
       <Teaser {...content} className="card-text" />
       <small className="card-text">
         <PrimarySectionLink {...content} className="mr-2" />
-        <DateElement value={published} dateFormat={dateFormat} />
+        <PublishedDate {...content} />
       </small>
     </>
   );
