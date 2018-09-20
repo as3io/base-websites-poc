@@ -8,6 +8,7 @@ const propTypes = {
   children: PropTypes.node.isRequired,
   className: PropTypes.string,
   tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
+  type: PropTypes.string.isRequired,
 };
 
 const defaultProps = {
@@ -19,8 +20,9 @@ const Card = ({
   children,
   className,
   tag: Tag,
+  type,
 }) => (
-  <Tag className={classNames('content', 'content--card', 'card', className)}>
+  <Tag className={classNames('content', 'content--card', `content--${type}`, 'card', className)}>
     {children}
   </Tag>
 );
