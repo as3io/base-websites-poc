@@ -1,8 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
-const BS4 = 'list-group-item';
-const BEM = `content content--list-item ${BS4}`;
+import classNames from 'classnames';
 
 const displayName = 'Templates/Content/ListGroupItem';
 
@@ -22,7 +20,7 @@ const ListGroupItem = ({
   className,
   tag: Tag,
 }) => (
-  <Tag className={className ? `${BEM} ${className}` : BEM}>
+  <Tag className={classNames('content', 'content--list-item', 'list-group-item', className)}>
     {children}
   </Tag>
 );

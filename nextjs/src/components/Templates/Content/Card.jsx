@@ -1,8 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
-const BS4 = 'card';
-const BEM = `content content--card ${BS4}`;
+import classNames from 'classnames';
 
 const displayName = 'Templates/Content/Card';
 
@@ -22,7 +20,7 @@ const Card = ({
   className,
   tag: Tag,
 }) => (
-  <Tag className={className ? `${BEM} ${className}` : BEM}>
+  <Tag className={classNames('content', 'content--card', 'card', className)}>
     {children}
   </Tag>
 );
