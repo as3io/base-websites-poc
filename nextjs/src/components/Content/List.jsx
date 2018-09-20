@@ -68,10 +68,12 @@ const ContentList = ({ sectionId }) => (
       }
       const hero = items[0] || {};
       return (
+        // This entire render would be considered a block component.
         <div className="row">
           <div className="col-lg-8">
             {/* Only render if the hero item exists */}
             {hero.id && (
+              // This should be turned into a flow component.
               <ContentCard type={hero.type} className="shadow">
                 <ContentCardBody>
                   <ShortNameLink content={hero} className="card-title" />
@@ -89,6 +91,7 @@ const ContentList = ({ sectionId }) => (
           <div className="col-lg-4">
             {/* Only render if additional items exist */}
             {items.length - 1 && (
+              // This should be turned into a flow component.
               <ContentListGroup className="shadow">
                 {items.map((content, index) => {
                   if (index === 0) return null;
