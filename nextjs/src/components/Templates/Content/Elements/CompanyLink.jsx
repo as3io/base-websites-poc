@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
-import CoreLink from '../../../Core/Elements/Content/Link';
+import Link from '../Link';
 
 const BEM = 'content__company';
 
@@ -15,28 +16,43 @@ const propTypes = {
     canonicalPath: PropTypes.string,
     name: PropTypes.string,
   }),
+  linkClassName: PropTypes.string,
+  prefix: PropTypes.string,
   tag: PropTypes.string,
+  type: PropTypes.string,
 };
 
 const defaultProps = {
   children: null,
   className: null,
   company: {},
+  linkClassName: null,
+  prefix: null,
   tag: 'span',
+  type: undefined,
 };
 
 const CompanyLink = ({
   children,
   className,
   company,
+  prefix,
+  linkClassName,
   tag: Tag,
+  type,
 }) => {
   const { id, canonicalPath, name } = company || {};
   return id && canonicalPath && (children || name) ? (
-    <Tag className={className ? `${BEM} ${className}` : BEM}>
-      <CoreLink contentId={id} asPath={canonicalPath}>
+    <Tag className={classNames(BEM, className)}>
+      {prefix && `${prefix} `}
+      <Link
+        id={id}
+        canonicalPath={canonicalPath}
+        type={type}
+        className={linkClassName}
+      >
         {children || name}
-      </CoreLink>
+      </Link>
     </Tag>
   ) : null;
 };
