@@ -2,7 +2,6 @@
   "siteName": "Officer.com",
   "siteLogo": "https://cdn.officer.com/files/base/cygnus/ofcr/image/static/logo/site_logo.png",
   "primaryNavItems": [
-    { "href": "/", "name": "Home" },
     { "href": "/section?alias=tactical", "name": "Tactical", "as": "/section/tactical" },
     { "href": "/section?alias=training-careers", "name": "Training & Careers", "as": "/section/training-careers" },
     { "href": "/section?alias=on-the-street", "name": "On The Street", "as": "/section/on-the-street" },
