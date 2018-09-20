@@ -10,7 +10,7 @@ import CompanyLink from '../../../Templates/Content/Elements/CompanyLink';
 import PrimarySectionLink from '../../../Templates/Content/Elements/PrimarySectionLink';
 import PublishedDate from '../../../Templates/Content/Elements/PublishedDate';
 
-const displayName = 'Site/Officer/Flows/ListA';
+const displayName = 'Site/Officer/Content/ListA';
 
 const propTypes = {
   className: PropTypes.string,
