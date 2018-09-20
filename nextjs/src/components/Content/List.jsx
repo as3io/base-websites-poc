@@ -66,40 +66,45 @@ const ContentList = ({ sectionId }) => (
           </span>
         );
       }
-      const hero = items[0];
-      if (!hero) return null;
+      const hero = items[0] || {};
       return (
         <div className="row">
           <div className="col-lg-8">
-            <ContentCard type={hero.type} className="shadow">
-              <ContentCardBody>
-                <ShortNameLink content={hero} className="card-title" />
-                <CompanyLink company={hero.company} className="card-text" />
-                <Teaser {...hero} className="card-text" />
-                <small className="card-text">
-                  <PrimarySectionLink {...hero} className="mr-2" />
-                  <AuthorLinks authors={hero.authors} className="mr-2" />
-                  <PublishedDate {...hero} />
-                </small>
-              </ContentCardBody>
-            </ContentCard>
+            {/* Only render if the hero item exists */}
+            {hero.id && (
+              <ContentCard type={hero.type} className="shadow">
+                <ContentCardBody>
+                  <ShortNameLink content={hero} className="card-title" />
+                  <CompanyLink company={hero.company} className="card-text" />
+                  <Teaser {...hero} className="card-text" />
+                  <small className="card-text">
+                    <PrimarySectionLink {...hero} className="mr-2" />
+                    <AuthorLinks authors={hero.authors} className="mr-2" />
+                    <PublishedDate {...hero} />
+                  </small>
+                </ContentCardBody>
+              </ContentCard>
+            )}
           </div>
           <div className="col-lg-4">
-            <ContentListGroup className="shadow">
-              {items.map((content, index) => {
-                if (index === 0) return null;
-                return (
-                  <ContentListGroupItem key={content.id} type={content.type}>
-                    <ShortNameLink content={content} className="mb-1" />
-                    <CompanyLink company={content.company} tag="small" className="d-block" prefix="From" />
-                    <small>
-                      <PrimarySectionLink {...content} className="mr-2" />
-                      <PublishedDate {...content} />
-                    </small>
-                  </ContentListGroupItem>
-                );
-              })}
-            </ContentListGroup>
+            {/* Only render if additional items exist */}
+            {items.length - 1 && (
+              <ContentListGroup className="shadow">
+                {items.map((content, index) => {
+                  if (index === 0) return null;
+                  return (
+                    <ContentListGroupItem key={content.id} type={content.type}>
+                      <ShortNameLink content={content} className="mb-1" />
+                      <CompanyLink company={content.company} tag="small" className="d-block" prefix="From" />
+                      <small>
+                        <PrimarySectionLink {...content} className="mr-2" />
+                        <PublishedDate {...content} />
+                      </small>
+                    </ContentListGroupItem>
+                  );
+                })}
+              </ContentListGroup>
+            )}
           </div>
         </div>
       );
