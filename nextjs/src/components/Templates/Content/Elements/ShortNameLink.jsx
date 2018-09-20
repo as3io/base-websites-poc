@@ -15,7 +15,7 @@ const propTypes = {
     id: PropTypes.number,
     canonicalPath: PropTypes.string,
     shortName: PropTypes.string,
-  }).isRequired,
+  }),
   linkClassName: PropTypes.string,
   tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
   type: PropTypes.string,
@@ -24,6 +24,7 @@ const propTypes = {
 const defaultProps = {
   children: null,
   className: null,
+  content: {},
   linkClassName: null,
   tag: 'h5',
   type: undefined,
@@ -43,12 +44,11 @@ const ShortNameLink = ({
       <Link
         id={id}
         canonicalPath={canonicalPath}
-        value={shortName}
         type={type}
         className={linkClassName}
         asHTML
       >
-        {children}
+        {children || shortName}
       </Link>
     </Tag>
   ) : null);
