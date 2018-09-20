@@ -4,8 +4,6 @@ import classNames from 'classnames';
 
 import Link from '../Link';
 
-const BEM = 'content__short-name';
-
 const displayName = 'Templates/Content/Elements/ShortNameLink';
 
 const propTypes = {
@@ -40,7 +38,7 @@ const ShortNameLink = ({
 }) => {
   const { id, canonicalPath, shortName } = content || {};
   return (id && canonicalPath && (children || shortName) ? (
-    <Tag className={classNames(BEM, className)}>
+    <Tag className={classNames('content__short-name', className)}>
       <Link
         id={id}
         canonicalPath={canonicalPath}

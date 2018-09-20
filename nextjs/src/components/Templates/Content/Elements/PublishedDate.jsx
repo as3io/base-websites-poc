@@ -1,9 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
 import CoreDate from '../../../Core/Elements/Date';
-
-const BEM = 'content__published-date';
 
 const displayName = 'Templates/Content/Elements/PublishedDate';
 
@@ -29,7 +28,7 @@ const PublishedDate = ({
 }) => (
   <CoreDate
     tag={tag}
-    className={className ? `${BEM} ${className}` : BEM}
+    className={classNames('content__published-date', className)}
     value={published}
     format={format}
   />

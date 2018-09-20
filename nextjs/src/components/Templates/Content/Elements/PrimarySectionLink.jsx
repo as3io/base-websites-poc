@@ -1,9 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
 import CoreSectionLink from '../../../Core/Elements/Content/SectionLink';
-
-const BEM = 'content__primary-section';
 
 const displayName = 'Templates/Content/Elements/PrimarySectionLink';
 
@@ -32,7 +31,7 @@ const PrimarySectionLink = ({
 }) => {
   const { name, alias } = primarySection || {};
   return alias && (children || name) ? (
-    <Tag className={className ? `${BEM} ${className}` : BEM}>
+    <Tag className={classNames('content__primary-section', className)}>
       <CoreSectionLink className="section__link" sectionAlias={alias}>
         {children || name}
       </CoreSectionLink>

@@ -1,9 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
 import CoreHTML from '../../../Core/Elements/HTML';
-
-const BEM = 'content__teaser';
 
 const displayName = 'Templates/Content/Elements/Teaser';
 
@@ -26,7 +25,7 @@ const Teaser = ({
 }) => (
   <CoreHTML
     tag={tag}
-    className={className ? `${BEM} ${className}` : BEM}
+    className={classNames('content__teaser', className)}
     html={teaser}
   />
 );

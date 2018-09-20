@@ -1,9 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
 import CoreLink from '../../../Core/Elements/Content/Link';
-
-const BEM = 'content__authors';
 
 const displayName = 'Templates/Content/Elements/AuthorsLink';
 
@@ -65,7 +64,7 @@ const AuthorsLink = ({
 
   // Wrap with a container element and map the nodes to content link components.
   return (
-    <Tag className={className ? `${BEM} ${className}` : BEM}>
+    <Tag className={classNames('content__authors', className)}>
       {prefix && `${prefix} `}
       {nodes.map((node, index) => {
         const isLast = index === nodes.length - 1;

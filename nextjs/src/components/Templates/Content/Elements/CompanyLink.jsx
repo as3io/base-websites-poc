@@ -4,8 +4,6 @@ import classNames from 'classnames';
 
 import Link from '../Link';
 
-const BEM = 'content__company';
-
 const displayName = 'Templates/Content/Elements/CompanyLink';
 
 const propTypes = {
@@ -43,7 +41,7 @@ const CompanyLink = ({
 }) => {
   const { id, canonicalPath, name } = company || {};
   return id && canonicalPath && (children || name) ? (
-    <Tag className={classNames(BEM, className)}>
+    <Tag className={classNames('content__company', className)}>
       {prefix && `${prefix} `}
       <Link
         id={id}
