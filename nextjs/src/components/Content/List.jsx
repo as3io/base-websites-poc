@@ -6,6 +6,7 @@ import ContentListGroupItem from '../Templates/Content/ListGroupItem';
 import ContentCard from '../Templates/Content/Card';
 import ContentCardBody from '../Templates/Content/Card/Body';
 
+import ElementsRow from '../Templates/Content/Elements/Row';
 import ShortNameLink from '../Templates/Content/Elements/ShortNameLink';
 import Teaser from '../Templates/Content/Elements/Teaser';
 import CompanyLink from '../Templates/Content/Elements/CompanyLink';
@@ -79,11 +80,11 @@ const ContentList = ({ sectionId }) => (
                   <ShortNameLink content={hero} className="card-title" />
                   <CompanyLink company={hero.company} className="card-text" />
                   <Teaser {...hero} className="card-text" />
-                  <small className="card-text">
+                  <ElementsRow tag="small" className="card-text">
                     <PrimarySectionLink {...hero} className="mr-2" />
                     <AuthorLinks authors={hero.authors} className="mr-2" />
                     <PublishedDate {...hero} />
-                  </small>
+                  </ElementsRow>
                 </ContentCardBody>
               </ContentCard>
             )}
@@ -99,10 +100,10 @@ const ContentList = ({ sectionId }) => (
                     <ContentListGroupItem key={content.id} type={content.type}>
                       <ShortNameLink content={content} className="mb-1" />
                       <CompanyLink company={content.company} tag="small" className="d-block" prefix="From" />
-                      <small>
+                      <ElementsRow tag="small">
                         <PrimarySectionLink {...content} className="mr-2" />
                         <PublishedDate {...content} />
-                      </small>
+                      </ElementsRow>
                     </ContentListGroupItem>
                   );
                 })}
