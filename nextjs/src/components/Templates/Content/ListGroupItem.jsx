@@ -8,6 +8,7 @@ const propTypes = {
   children: PropTypes.node.isRequired,
   className: PropTypes.string,
   tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
+  type: PropTypes.string.isRequired,
 };
 
 const defaultProps = {
@@ -19,8 +20,9 @@ const ListGroupItem = ({
   children,
   className,
   tag: Tag,
+  type,
 }) => (
-  <Tag className={classNames('content', 'content--list-item', 'list-group-item', className)}>
+  <Tag className={classNames('content', 'content--list-item', `content--${type}`, 'list-group-item', className)}>
     {children}
   </Tag>
 );

@@ -78,7 +78,7 @@ const ContentList = ({ sectionId }) => (
               {items.map((content, index) => {
                 if (index === 0) return null;
                 return (
-                  <ContentListGroupItem key={content.id}>
+                  <ContentListGroupItem key={content.id} type={content.type}>
                     <ShortNameLink content={content} className="mb-1" />
                     <CompanyLink company={content.company} tag="small" className="d-block" prefix="From" />
                     <small>
