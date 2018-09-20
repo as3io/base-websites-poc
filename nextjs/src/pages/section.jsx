@@ -10,10 +10,10 @@ import sectionPage from '../gql/queries/section-page.graphql';
 
 const SectionPage = ({ section }) => (
   <DefaultLayout>
-    <section>
+    <main>
       <h1>{section.name}</h1>
       <ContentList sectionId={section.id} />
-    </section>
+    </main>
   </DefaultLayout>
 );
 
