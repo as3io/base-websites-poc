@@ -3,14 +3,17 @@ import PropTypes from 'prop-types';
 
 import ContentListGroup from '../Templates/Content/ListGroup';
 import ContentListGroupItem from '../Templates/Content/ListGroupItem';
+import ContentCard from '../Templates/Content/Card';
+import ContentCardBody from '../Templates/Content/Card/Body';
 
 import ShortNameLink from '../Templates/Content/Elements/ShortNameLink';
+import Teaser from '../Templates/Content/Elements/Teaser';
 import CompanyLink from '../Templates/Content/Elements/CompanyLink';
+import AuthorLinks from '../Templates/Content/Elements/AuthorLinks';
 import PrimarySectionLink from '../Templates/Content/Elements/PrimarySectionLink';
 import PublishedDate from '../Templates/Content/Elements/PublishedDate';
 
 import SectionQuerySimple from '../Core/BlockQueries/SectionQuerySimple';
-import ContentCardStandard from '../Templates/Content/Card/Standard';
 
 const fields = `
   id
@@ -68,10 +71,18 @@ const ContentList = ({ sectionId }) => (
       return (
         <div className="row">
           <div className="col-lg-8">
-            <ContentCardStandard
-              className="shadow"
-              content={hero}
-            />
+            <ContentCard type={hero.type} className="shadow">
+              <ContentCardBody>
+                <ShortNameLink content={hero} className="card-title" />
+                <CompanyLink company={hero.company} className="card-text" />
+                <Teaser {...hero} className="card-text" />
+                <small className="card-text">
+                  <PrimarySectionLink {...hero} className="mr-2" />
+                  <AuthorLinks authors={hero.authors} className="mr-2" />
+                  <PublishedDate {...hero} />
+                </small>
+              </ContentCardBody>
+            </ContentCard>
           </div>
           <div className="col-lg-4">
             <ContentListGroup className="shadow">
