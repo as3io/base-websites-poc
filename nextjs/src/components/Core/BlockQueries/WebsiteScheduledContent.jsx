@@ -3,7 +3,10 @@ import PropTypes from 'prop-types';
 import { Query } from 'react-apollo';
 import gql from 'graphql-tag';
 
-const SectionQuerySimple = ({
+/**
+ *
+ */
+const WebsiteScheduledContent = ({
   after,
   children,
   excludeContentTypes,
@@ -25,14 +28,11 @@ const SectionQuerySimple = ({
   };
 
   const query = gql`
-    query SectionQueryBlock($input: WebsiteScheduledPlatformContentQuery!) {
+    query WebsiteScheduledContent($input: WebsiteScheduledPlatformContentQuery!) {
       websiteScheduledPlatformContent(input: $input) {
         edges {
           node {
-            id
-            content {
-              ${fields}
-            }
+            ${fields}
           }
         }
       }
@@ -45,7 +45,7 @@ const SectionQuerySimple = ({
           let items = [];
           if (data && data.websiteScheduledPlatformContent) {
             items = data.websiteScheduledPlatformContent.edges
-              .map(edge => (edge && edge.node && edge.node.content ? edge.node.content : null))
+              .map(edge => (edge && edge.node ? edge.node : null))
               .filter(c => c);
           }
           return children({ loading, error, items });
@@ -55,7 +55,7 @@ const SectionQuerySimple = ({
   );
 };
 
-SectionQuerySimple.defaultProps = {
+WebsiteScheduledContent.defaultProps = {
   after: null,
   children: () => {},
   excludeContentTypes: [],
@@ -65,7 +65,7 @@ SectionQuerySimple.defaultProps = {
   sectionBubbling: true,
 };
 
-SectionQuerySimple.propTypes = {
+WebsiteScheduledContent.propTypes = {
   after: PropTypes.string,
   children: PropTypes.func,
   excludeContentTypes: PropTypes.arrayOf(PropTypes.string),
@@ -77,4 +77,4 @@ SectionQuerySimple.propTypes = {
   sectionId: PropTypes.number.isRequired,
 };
 
-export default SectionQuerySimple;
+export default WebsiteScheduledContent;

@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import WebsiteScheduledContent from '../Core/BlockQueries/WebsiteScheduledContent';
+
 import ContentListGroup from '../Templates/Content/ListGroup';
 import ContentListGroupItem from '../Templates/Content/ListGroupItem';
 import ContentCard from '../Templates/Content/Card';
@@ -13,8 +15,6 @@ import CompanyLink from '../Templates/Content/Elements/CompanyLink';
 import AuthorLinks from '../Templates/Content/Elements/AuthorLinks';
 import PrimarySectionLink from '../Templates/Content/Elements/PrimarySectionLink';
 import PublishedDate from '../Templates/Content/Elements/PublishedDate';
-
-import SectionQuerySimple from '../Core/BlockQueries/SectionQuerySimple';
 
 const fields = `
   id
@@ -55,7 +55,7 @@ const fields = `
 `;
 
 const ContentList = ({ sectionId }) => (
-  <SectionQuerySimple sectionId={sectionId} fields={fields} first={7} requiresImage includeContentTypes={['Article', 'Product']}>
+  <WebsiteScheduledContent sectionId={sectionId} fields={fields} first={7} requiresImage includeContentTypes={['Article', 'Product']}>
     {({ loading, error, items }) => {
       if (loading) return <span>Loading...</span>;
       if (error) {
@@ -113,7 +113,7 @@ const ContentList = ({ sectionId }) => (
         </div>
       );
     }}
-  </SectionQuerySimple>
+  </WebsiteScheduledContent>
 );
 
 ContentList.propTypes = {
