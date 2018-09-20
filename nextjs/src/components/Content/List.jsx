@@ -1,9 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import ContentListGroup from '../Templates/Content/ListGroup';
+import ContentListGroupItem from '../Templates/Content/ListGroupItem';
+
+import ShortNameLink from '../Templates/Content/Elements/ShortNameLink';
+import CompanyLink from '../Templates/Content/Elements/CompanyLink';
+import PrimarySectionLink from '../Templates/Content/Elements/PrimarySectionLink';
+import PublishedDate from '../Templates/Content/Elements/PublishedDate';
+
 import SectionQuerySimple from '../Core/BlockQueries/SectionQuerySimple';
 import ContentCardStandard from '../Templates/Content/Card/Standard';
-import ContentListItemStandard from '../Templates/Content/ListItem/Standard';
 
 const fields = `
   id
@@ -67,14 +74,21 @@ const ContentList = ({ sectionId }) => (
             />
           </div>
           <div className="col-lg-4">
-            <div className="list-group shadow">
+            <ContentListGroup className="shadow">
               {items.map((content, index) => {
                 if (index === 0) return null;
                 return (
-                  <ContentListItemStandard key={content.id} content={content} />
+                  <ContentListGroupItem key={content.id}>
+                    <ShortNameLink content={content} className="mb-1" />
+                    <CompanyLink company={content.company} tag="small" className="d-block" prefix="From" />
+                    <small>
+                      <PrimarySectionLink {...content} className="mr-2" />
+                      <PublishedDate {...content} />
+                    </small>
+                  </ContentListGroupItem>
                 );
               })}
-            </div>
+            </ContentListGroup>
           </div>
         </div>
       );
