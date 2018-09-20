@@ -3,8 +3,7 @@ import PropTypes from 'prop-types';
 
 import WebsiteScheduledContent from '../Core/BlockQueries/WebsiteScheduledContent';
 
-import ContentListGroup from '../Templates/Content/ListGroup';
-import ContentListGroupItem from '../Templates/Content/ListGroupItem';
+import FlowListA from '../Site/Officer/Flows/ListA';
 
 import ContentCard from '../Templates/Content/Card';
 import ContentCardBody from '../Templates/Content/Card/Body';
@@ -57,7 +56,7 @@ const fields = `
 `;
 
 const ContentList = ({ sectionId }) => (
-  <WebsiteScheduledContent sectionId={sectionId} fields={fields} first={7} requiresImage includeContentTypes={['Article', 'Product']}>
+  <WebsiteScheduledContent sectionId={sectionId} fields={fields} first={7} requiresImage>
     {({ loading, error, items }) => {
       if (loading) return <span>Loading...</span>;
       if (error) {
@@ -70,6 +69,7 @@ const ContentList = ({ sectionId }) => (
         );
       }
       const hero = items[0] || {};
+      const listItems = items.slice(1);
       return (
         // This entire render would be considered a block component.
         <div className="row">
@@ -93,25 +93,7 @@ const ContentList = ({ sectionId }) => (
             )}
           </div>
           <div className="col-lg-4">
-            {/* Only render if additional items exist */}
-            {items.length - 1 && (
-              // This should be turned into a flow component.
-              <ContentListGroup className="shadow">
-                {items.map((content, index) => {
-                  if (index === 0) return null;
-                  return (
-                    <ContentListGroupItem id={content.id} key={content.id} type={content.type}>
-                      <ShortNameLink content={content} className="mb-1" />
-                      <CompanyLink company={content.company} tag="small" className="d-block" prefix="From" />
-                      <ElementsRow tag="small">
-                        <PrimarySectionLink {...content} className="mr-2" />
-                        <PublishedDate {...content} />
-                      </ElementsRow>
-                    </ContentListGroupItem>
-                  );
-                })}
-              </ContentListGroup>
-            )}
+            <FlowListA nodes={listItems} />
           </div>
         </div>
       );
