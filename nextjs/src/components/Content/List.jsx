@@ -5,8 +5,10 @@ import WebsiteScheduledContent from '../Core/BlockQueries/WebsiteScheduledConten
 
 import ContentListGroup from '../Templates/Content/ListGroup';
 import ContentListGroupItem from '../Templates/Content/ListGroupItem';
+
 import ContentCard from '../Templates/Content/Card';
 import ContentCardBody from '../Templates/Content/Card/Body';
+import ContentCardImage from '../Templates/Content/Card/PrimaryImage';
 
 import ElementsRow from '../Templates/Content/Elements/Row';
 import ShortNameLink from '../Templates/Content/Elements/ShortNameLink';
@@ -76,6 +78,7 @@ const ContentList = ({ sectionId }) => (
             {hero.id && (
               // This should be turned into a flow component.
               <ContentCard id={hero.id} type={hero.type} className="shadow">
+                <ContentCardImage content={hero} />
                 <ContentCardBody>
                   <ShortNameLink content={hero} className="card-title" />
                   <CompanyLink company={hero.company} className="card-text" />

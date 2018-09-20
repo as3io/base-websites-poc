@@ -7,24 +7,24 @@ const displayName = 'Templates/Content/Card/Body';
 const propTypes = {
   children: PropTypes.node.isRequired,
   className: PropTypes.string,
-  overlay: PropTypes.bool,
+  overImage: PropTypes.bool,
   tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
 };
 
 const defaultProps = {
   className: null,
-  overlay: false,
+  overImage: false,
   tag: 'div',
 };
 
 const Body = ({
   children,
   className,
-  overlay,
+  overImage,
   tag: Tag,
 }) => (
-  <Tag className={classNames(!overlay ? 'card-body' : 'card-img-overlay d-flex flex-column', className)}>
-    {overlay ? (
+  <Tag className={classNames(!overImage ? 'card-body' : 'card-img-overlay d-flex flex-column', className)}>
+    {overImage ? (
       <div className="mt-auto">
         {children}
       </div>
