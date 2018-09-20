@@ -15,7 +15,6 @@ const propTypes = {
   className: PropTypes.string,
   id: PropTypes.number,
   type: PropTypes.string,
-  value: PropTypes.node,
 };
 
 const defaultProps = {
@@ -25,7 +24,6 @@ const defaultProps = {
   className: null,
   id: null,
   type: 'primary',
-  value: null,
 };
 
 const Link = ({
@@ -35,18 +33,18 @@ const Link = ({
   className,
   id,
   type,
-  value,
 }) => {
   const linkType = type || defaultProps.type;
   const textClass = linkType !== 'primary' ? `text-${linkType}` : null;
+  const html = asHTML && typeof children === 'string' ? children : null;
   return (
     <CoreLink
       className={classNames(BEM, className, textClass)}
       contentId={id}
       asPath={canonicalPath}
-      html={asHTML ? value : null}
+      html={html}
     >
-      {asHTML ? children : children || value}
+      {html ? null : children}
     </CoreLink>
   );
 };
