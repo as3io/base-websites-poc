@@ -14,28 +14,30 @@ const propTypes = {
     alias: PropTypes.string,
     name: PropTypes.string,
   }),
+  tag: PropTypes.string,
 };
 
 const defaultProps = {
   children: null,
   className: null,
   primarySection: {},
+  tag: 'span',
 };
 
 const PrimarySectionLink = ({
   children,
   className,
   primarySection,
+  tag: Tag,
 }) => {
   const { name, alias } = primarySection || {};
-  return (
-    <CoreSectionLink
-      className={className ? `${BEM} ${className}` : BEM}
-      sectionAlias={alias}
-    >
-      {children || name}
-    </CoreSectionLink>
-  );
+  return alias && (children || name) ? (
+    <Tag className={className ? `${BEM} ${className}` : BEM}>
+      <CoreSectionLink className="section__link" sectionAlias={alias}>
+        {children || name}
+      </CoreSectionLink>
+    </Tag>
+  ) : null;
 };
 
 PrimarySectionLink.displayName = displayName;

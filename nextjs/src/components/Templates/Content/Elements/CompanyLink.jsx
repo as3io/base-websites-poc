@@ -22,7 +22,7 @@ const defaultProps = {
   children: null,
   className: null,
   company: {},
-  tag: 'p',
+  tag: 'span',
 };
 
 const CompanyLink = ({
@@ -32,7 +32,7 @@ const CompanyLink = ({
   tag: Tag,
 }) => {
   const { id, canonicalPath, name } = company || {};
-  return id && canonicalPath ? (
+  return id && canonicalPath && (children || name) ? (
     <Tag className={className ? `${BEM} ${className}` : BEM}>
       <CoreLink className="content__link" contentId={id} asPath={canonicalPath}>
         {children || name}
