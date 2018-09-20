@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 
 import Field from '../Field';
@@ -76,9 +76,8 @@ const AuthorsLink = ({
         const isLast = index === nodes.length - 1;
         const { id, fullName, canonicalPath } = node;
         return (
-          <>
+          <Fragment key={id}>
             <Link
-              key={id}
               id={id}
               canonicalPath={canonicalPath}
               type={type}
@@ -87,7 +86,7 @@ const AuthorsLink = ({
               {children || fullName}
             </Link>
             {!isLast && seperator}
-          </>
+          </Fragment>
         );
       })}
     </Field>
