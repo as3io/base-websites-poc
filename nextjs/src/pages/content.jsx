@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 import DefaultLayout from '../layouts/Default';
 import checkContent from '../lib/check-content';
 import createMarkup from '../lib/create-markup';
@@ -11,7 +12,7 @@ import contentPage from '../gql/queries/content-page.graphql';
 const ContentPage = ({ content, origin }) => (
   <DefaultLayout>
     <RelCanonical origin={origin} pathname={content.canonicalPath} />
-    <article>
+    <article data-id={content.id} className={classNames('content', 'content--display', `content--${content.type}`)}>
       <h1>{content.name}</h1>
       <h5>{content.teaser}</h5>
       <hr />

@@ -2,6 +2,7 @@ query ContentPage($input: RootPlatformContentQueryOne!) {
 	platformContent(input: $input) {
 		id
     name
+    type
     teaser
     body
     redirectTo
