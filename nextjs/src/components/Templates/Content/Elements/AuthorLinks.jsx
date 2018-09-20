@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Field from '../Field';
-import CoreLink from '../../../Core/Elements/Content/Link';
+import Link from '../Link';
 
 const displayName = 'Templates/Content/Elements/AuthorsLink';
 
@@ -21,18 +21,22 @@ const propTypes = {
       }),
     ),
   }),
+  linkClassName: PropTypes.string,
   prefix: PropTypes.string,
   seperator: PropTypes.string,
   tag: PropTypes.string,
+  type: PropTypes.string,
 };
 
 const defaultProps = {
   children: null,
   className: null,
   authors: {},
+  linkClassName: null,
   prefix: null,
   seperator: ' | ',
   tag: 'span',
+  type: undefined,
 };
 
 /**
@@ -44,8 +48,10 @@ const AuthorsLink = ({
   className,
   authors,
   prefix,
+  linkClassName,
   seperator,
   tag,
+  type,
 }) => {
   // Ensure `authors` is treated as an object and `edges` is treated as an array.
   const { edges = [] } = authors || {};
@@ -71,9 +77,15 @@ const AuthorsLink = ({
         const { id, fullName, canonicalPath } = node;
         return (
           <>
-            <CoreLink key={id} contentId={id} asPath={canonicalPath}>
+            <Link
+              key={id}
+              id={id}
+              canonicalPath={canonicalPath}
+              type={type}
+              className={linkClassName}
+            >
               {children || fullName}
-            </CoreLink>
+            </Link>
             {!isLast && seperator}
           </>
         );
