@@ -12,7 +12,7 @@ const ContentSectionLinkElement = ({
   sectionAlias,
 }) => {
   const asPath = sectionAsPath(sectionAlias);
-  const showLink = router.asPath !== asPath;
+  const showLink = !sectionAlias || router.asPath !== asPath;
 
   const link = showLink ? (
     <SectionLink className={className} sectionAlias={sectionAlias}>
