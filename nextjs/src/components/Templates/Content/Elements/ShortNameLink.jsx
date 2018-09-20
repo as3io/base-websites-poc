@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 
 import Link from '../Link';
+import Field from '../Field';
 
 const displayName = 'Templates/Content/Elements/ShortNameLink';
 
@@ -33,12 +33,12 @@ const ShortNameLink = ({
   className,
   content,
   linkClassName,
-  tag: Tag,
+  tag,
   type,
 }) => {
   const { id, canonicalPath, shortName } = content || {};
   return (id && canonicalPath && (children || shortName) ? (
-    <Tag className={classNames('content__short-name', className)}>
+    <Field tag={tag} name="short-name" className={className}>
       <Link
         id={id}
         canonicalPath={canonicalPath}
@@ -48,7 +48,7 @@ const ShortNameLink = ({
       >
         {children || shortName}
       </Link>
-    </Tag>
+    </Field>
   ) : null);
 };
 

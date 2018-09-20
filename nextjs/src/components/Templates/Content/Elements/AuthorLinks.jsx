@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 
+import Field from '../Field';
 import CoreLink from '../../../Core/Elements/Content/Link';
 
 const displayName = 'Templates/Content/Elements/AuthorsLink';
@@ -45,7 +45,7 @@ const AuthorsLink = ({
   authors,
   prefix,
   seperator,
-  tag: Tag,
+  tag,
 }) => {
   // Ensure `authors` is treated as an object and `edges` is treated as an array.
   const { edges = [] } = authors || {};
@@ -64,7 +64,7 @@ const AuthorsLink = ({
 
   // Wrap with a container element and map the nodes to content link components.
   return (
-    <Tag className={classNames('content__authors', className)}>
+    <Field tag={tag} name="authors" className={className}>
       {prefix && `${prefix} `}
       {nodes.map((node, index) => {
         const isLast = index === nodes.length - 1;
@@ -78,7 +78,7 @@ const AuthorsLink = ({
           </>
         );
       })}
-    </Tag>
+    </Field>
   );
 };
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 
+import Field from '../Field';
 import CoreSectionLink from '../../../Core/Elements/Content/SectionLink';
 
 const displayName = 'Templates/Content/Elements/PrimarySectionLink';
@@ -27,15 +27,15 @@ const PrimarySectionLink = ({
   children,
   className,
   primarySection,
-  tag: Tag,
+  tag,
 }) => {
   const { name, alias } = primarySection || {};
   return alias && (children || name) ? (
-    <Tag className={classNames('content__primary-section', className)}>
+    <Field tag={tag} name="primary-section" className={className}>
       <CoreSectionLink className="section__link" sectionAlias={alias}>
         {children || name}
       </CoreSectionLink>
-    </Tag>
+    </Field>
   ) : null;
 };
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 
+import Field from '../Field';
 import Link from '../Link';
 
 const displayName = 'Templates/Content/Elements/CompanyLink';
@@ -36,12 +36,12 @@ const CompanyLink = ({
   company,
   prefix,
   linkClassName,
-  tag: Tag,
+  tag,
   type,
 }) => {
   const { id, canonicalPath, name } = company || {};
   return id && canonicalPath && (children || name) ? (
-    <Tag className={classNames('content__company', className)}>
+    <Field tag={tag} name="company" className={className}>
       {prefix && `${prefix} `}
       <Link
         id={id}
@@ -51,7 +51,7 @@ const CompanyLink = ({
       >
         {children || name}
       </Link>
-    </Tag>
+    </Field>
   ) : null;
 };
 
