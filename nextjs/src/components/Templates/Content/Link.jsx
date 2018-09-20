@@ -4,8 +4,6 @@ import classNames from 'classnames';
 
 import CoreLink from '../../Core/Elements/Content/Link';
 
-const BEM = 'content__link';
-
 const displayName = 'Templates/Content/Link';
 
 const propTypes = {
@@ -39,7 +37,7 @@ const Link = ({
   const html = asHTML && typeof children === 'string' ? children : null;
   return (
     <CoreLink
-      className={classNames(BEM, className, textClass)}
+      className={classNames('content__link', className, textClass)}
       contentId={id}
       asPath={canonicalPath}
       html={html}

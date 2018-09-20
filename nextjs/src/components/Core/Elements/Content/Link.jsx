@@ -23,13 +23,14 @@ const ContentLinkElement = ({
 
 ContentLinkElement.propTypes = {
   asPath: PropTypes.string.isRequired,
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node,
   className: PropTypes.string,
   contentId: PropTypes.number.isRequired,
   html: PropTypes.string,
 };
 
 ContentLinkElement.defaultProps = {
+  children: null,
   className: null,
   html: null,
 };

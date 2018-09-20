@@ -1,13 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+// @todo This link should use the template link.
 import Link from '../../../Core/Elements/Content/Link';
 import ShortNameLink from '../Elements/ShortNameLink';
 import Teaser from '../Elements/Teaser';
 import CompanyLink from '../Elements/CompanyLink';
 import PrimarySectionLink from '../Elements/PrimarySectionLink';
 import PublishedDate from '../Elements/PublishedDate';
-import AuthorsLink from '../Elements/AuthorsLink';
 
 const ContentCardStandard = ({
   className,
@@ -24,12 +24,11 @@ const ContentCardStandard = ({
 
   const contents = (
     <>
-      <ShortNameLink {...content} className="card-title" />
+      <ShortNameLink content={content} className="card-title" />
       <CompanyLink {...content} className="card-text" />
       <Teaser {...content} className="card-text" />
       <small className="card-text">
         <PrimarySectionLink {...content} className="mr-2" />
-        <AuthorsLink {...content} className="mr-2" />
         <PublishedDate {...content} />
       </small>
     </>

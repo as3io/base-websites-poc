@@ -1,0 +1,27 @@
+fragment SectionQueryContentFragment on PlatformScheduledContentConnection {
+  edges {
+    cursor
+    node {
+      id
+      content {
+        id
+        name
+        shortName
+        teaser
+        type
+        canonicalPath
+        published
+        primaryImage {
+          id
+          src(input: $imageInput)
+          alt
+        }
+        primarySection {
+          id
+          name
+          alias
+        }
+      }
+    }
+  }
+}
