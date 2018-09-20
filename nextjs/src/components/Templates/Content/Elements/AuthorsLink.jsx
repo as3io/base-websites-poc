@@ -72,7 +72,7 @@ const AuthorsLink = ({
         const { id, fullName, canonicalPath } = node;
         return (
           <>
-            <CoreLink key={id} className="content__link" contentId={id} asPath={canonicalPath}>
+            <CoreLink key={id} contentId={id} asPath={canonicalPath}>
               {children || fullName}
             </CoreLink>
             {!isLast && seperator}

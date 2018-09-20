@@ -31,12 +31,7 @@ const ShortNameLink = ({
   tag: Tag,
 }) => (id && canonicalPath && (children || shortName) ? (
   <Tag className={className ? `${BEM} ${className}` : BEM}>
-    <CoreLink
-      className="content__link"
-      contentId={id}
-      asPath={canonicalPath}
-      html={shortName}
-    >
+    <CoreLink contentId={id} asPath={canonicalPath} html={shortName}>
       {children}
     </CoreLink>
   </Tag>

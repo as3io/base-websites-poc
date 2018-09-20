@@ -4,22 +4,27 @@ import Link from 'next/link';
 import contentHref from '../../../../lib/content-paths';
 import createMarkup from '../../../../lib/create-markup';
 
+const BEM = 'content__link';
+
 const ContentLinkElement = ({
   asPath,
   children,
   className,
   contentId,
   html,
-}) => (
-  <Link href={contentHref(contentId)} as={asPath}>
-    {html ? (
-      // eslint-disable-next-line react/no-danger
-      <a className={className} dangerouslySetInnerHTML={createMarkup(html)} />
-    ) : (
-      <a className={className}>{children}</a>
-    )}
-  </Link>
-);
+}) => {
+  const classNames = className ? `${BEM} ${className}` : BEM;
+  return (
+    <Link href={contentHref(contentId)} as={asPath}>
+      {html ? (
+        // eslint-disable-next-line react/no-danger
+        <a className={classNames} dangerouslySetInnerHTML={createMarkup(html)} />
+      ) : (
+        <a className={classNames}>{children}</a>
+      )}
+    </Link>
+  );
+};
 
 ContentLinkElement.propTypes = {
   asPath: PropTypes.string.isRequired,

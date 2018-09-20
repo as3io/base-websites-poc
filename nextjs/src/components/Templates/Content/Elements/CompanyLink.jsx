@@ -34,7 +34,7 @@ const CompanyLink = ({
   const { id, canonicalPath, name } = company || {};
   return id && canonicalPath && (children || name) ? (
     <Tag className={className ? `${BEM} ${className}` : BEM}>
-      <CoreLink className="content__link" contentId={id} asPath={canonicalPath}>
+      <CoreLink contentId={id} asPath={canonicalPath}>
         {children || name}
       </CoreLink>
     </Tag>
