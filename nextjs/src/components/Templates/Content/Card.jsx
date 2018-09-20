@@ -7,6 +7,7 @@ const displayName = 'Templates/Content/Card';
 const propTypes = {
   children: PropTypes.node.isRequired,
   className: PropTypes.string,
+  id: PropTypes.number.isRequired,
   tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
   type: PropTypes.string.isRequired,
 };
@@ -19,10 +20,11 @@ const defaultProps = {
 const Card = ({
   children,
   className,
+  id,
   tag: Tag,
   type,
 }) => (
-  <Tag className={classNames('content', 'content--card', `content--${type}`, 'card', className)}>
+  <Tag data-id={id} className={classNames('content', 'content--card', `content--${type}`, 'card', className)}>
     {children}
   </Tag>
 );

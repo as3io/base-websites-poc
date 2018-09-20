@@ -75,7 +75,7 @@ const ContentList = ({ sectionId }) => (
             {/* Only render if the hero item exists */}
             {hero.id && (
               // This should be turned into a flow component.
-              <ContentCard type={hero.type} className="shadow">
+              <ContentCard id={hero.id} type={hero.type} className="shadow">
                 <ContentCardBody>
                   <ShortNameLink content={hero} className="card-title" />
                   <CompanyLink company={hero.company} className="card-text" />
@@ -97,7 +97,7 @@ const ContentList = ({ sectionId }) => (
                 {items.map((content, index) => {
                   if (index === 0) return null;
                   return (
-                    <ContentListGroupItem key={content.id} type={content.type}>
+                    <ContentListGroupItem id={content.id} key={content.id} type={content.type}>
                       <ShortNameLink content={content} className="mb-1" />
                       <CompanyLink company={content.company} tag="small" className="d-block" prefix="From" />
                       <ElementsRow tag="small">
