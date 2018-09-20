@@ -1,19 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import ContentCard from '../../../Templates/Content/Card';
-import ContentCardBody from '../../../Templates/Content/Card/Body';
-import ContentCardImage from '../../../Templates/Content/Card/PrimaryImage';
+import ContentCard from '../Templates/Content/Card';
+import ContentCardBody from '../Templates/Content/Card/Body';
+import ContentCardImage from '../Templates/Content/Card/PrimaryImage';
 
-import ElementsRow from '../../../Templates/Content/Elements/Row';
-import ShortNameLink from '../../../Templates/Content/Elements/ShortNameLink';
-import Teaser from '../../../Templates/Content/Elements/Teaser';
-import CompanyLink from '../../../Templates/Content/Elements/CompanyLink';
-import AuthorLinks from '../../../Templates/Content/Elements/AuthorLinks';
-import PrimarySectionLink from '../../../Templates/Content/Elements/PrimarySectionLink';
-import PublishedDate from '../../../Templates/Content/Elements/PublishedDate';
+import ElementsRow from '../Templates/Content/Elements/Row';
+import ShortNameLink from '../Templates/Content/Elements/ShortNameLink';
+import Teaser from '../Templates/Content/Elements/Teaser';
+import CompanyLink from '../Templates/Content/Elements/CompanyLink';
+import AuthorLinks from '../Templates/Content/Elements/AuthorLinks';
+import PrimarySectionLink from '../Templates/Content/Elements/PrimarySectionLink';
+import PublishedDate from '../Templates/Content/Elements/PublishedDate';
 
-const displayName = 'Site/Officer/Content/CardA';
+const displayName = 'Site/CardA';
 
 const propTypes = {
   className: PropTypes.string,

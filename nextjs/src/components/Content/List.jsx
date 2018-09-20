@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 
 import WebsiteScheduledContent from '../Core/BlockQueries/WebsiteScheduledContent';
 
-import ContentCardA from '../Site/Officer/Content/CardA';
-import ContentListA from '../Site/Officer/Content/ListA';
+import ContentCardA from '../Site/CardA';
+import ContentListA from '../Site/ListA';
 
 const fields = `
   id
@@ -63,7 +63,7 @@ const ContentList = ({ sectionId }) => (
         // This entire render would be considered a block component.
         <div className="row">
           <div className="col-lg-8">
-            <ContentCardA node={hero} />
+            <ContentCardA node={hero} className="mb-3" />
           </div>
           <div className="col-lg-4">
             <ContentListA nodes={listItems} />

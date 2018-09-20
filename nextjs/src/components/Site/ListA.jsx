@@ -1,34 +1,37 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import ContentListGroup from '../../../Templates/Content/ListGroup';
-import ContentListGroupItem from '../../../Templates/Content/ListGroupItem';
+import ContentListGroup from '../Templates/Content/ListGroup';
+import ContentListGroupItem from '../Templates/Content/ListGroupItem';
 
-import ElementsRow from '../../../Templates/Content/Elements/Row';
-import ShortNameLink from '../../../Templates/Content/Elements/ShortNameLink';
-import CompanyLink from '../../../Templates/Content/Elements/CompanyLink';
-import PrimarySectionLink from '../../../Templates/Content/Elements/PrimarySectionLink';
-import PublishedDate from '../../../Templates/Content/Elements/PublishedDate';
+import ElementsRow from '../Templates/Content/Elements/Row';
+import ShortNameLink from '../Templates/Content/Elements/ShortNameLink';
+import CompanyLink from '../Templates/Content/Elements/CompanyLink';
+import PrimarySectionLink from '../Templates/Content/Elements/PrimarySectionLink';
+import PublishedDate from '../Templates/Content/Elements/PublishedDate';
 
-const displayName = 'Site/Officer/Content/ListA';
+const displayName = 'Site/ListA';
 
 const propTypes = {
   className: PropTypes.string,
+  flush: PropTypes.bool,
   nodes: PropTypes.arrayOf(PropTypes.object),
 };
 
 const defaultProps = {
   className: null,
+  flush: false,
   nodes: [],
 };
 
 const ListA = ({
   className,
+  flush,
   nodes,
 }) => {
   const items = (Array.isArray(nodes) ? nodes : []).filter(content => content.id);
   return items.length ? (
-    <ContentListGroup className={className}>
+    <ContentListGroup className={className} flush={flush}>
       {items.map(content => (
         <ContentListGroupItem id={content.id} key={content.id} type={content.type}>
           <ShortNameLink content={content} className="mb-1" />
