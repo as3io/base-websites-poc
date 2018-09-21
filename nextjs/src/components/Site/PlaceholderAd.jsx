@@ -12,10 +12,8 @@ const defaultProps = {
 };
 
 const PlaceholderAd = ({ className, size }) => (
-  <div className={classNames('card', className)}>
-    <div className="card-body text-center">
-      <img src={`https://dummyimage.com/${size}/ccc/000`} alt={`${size} Advertisement`} />
-    </div>
+  <div className={classNames('text-center', className)}>
+    <img src={`https://dummyimage.com/${size}/ccc/000`} alt={`${size} Advertisement`} />
   </div>
 );
 

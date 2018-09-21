@@ -6,7 +6,7 @@ import { siteName, primaryNavItems, siteLogo } from '../site-config.json';
 import Item from './ActiveNavItem';
 
 const SiteNavigation = () => (
-  <Navbar color="dark" className="sticky-top" dark expand>
+  <Navbar color="dark" className="sticky-top shadow" dark expand>
     <Link href="/" passHref>
       <NavbarBrand>
         {siteLogo && siteLogo.length ? (
