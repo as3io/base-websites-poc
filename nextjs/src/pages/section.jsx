@@ -7,6 +7,7 @@ import { sectionAsPath, sectionHref } from '../lib/section-paths';
 import DefaultLayout from '../layouts/Default';
 import BlockHeroA from '../components/Site/Content/Block/HeroA';
 import BlockCardListGroupA from '../components/Site/Content/Block/CardListGroupA';
+import PlaceholderAd from '../components/Site/PlaceholderAd';
 
 import sectionPage from '../gql/queries/section-page.graphql';
 
@@ -37,11 +38,7 @@ const SectionPage = ({ section }) => (
           />
         </div>
         <div className="col-lg-4">
-          <div className="card my-3">
-            <div className="card-body text-center">
-              <img src="https://dummyimage.com/300x600/ccc/000" alt="300x600 Advertisement" />
-            </div>
-          </div>
+          <PlaceholderAd size="300x600" className="my-3" />
         </div>
         <div className="col-lg-4">
           <BlockCardListGroupA
@@ -96,9 +93,13 @@ const SectionPage = ({ section }) => (
       </div>
       <hr />
       <div className="row">
+        <div className="col-lg-4">
+          <PlaceholderAd size="300x600" className="my-3" />
+        </div>
         <div className="col-lg-4" />
-        <div className="col-lg-4" />
-        <div className="col-lg-4" />
+        <div className="col-lg-4">
+          <PlaceholderAd size="300x600" className="my-3" />
+        </div>
       </div>
       <hr />
     </main>
