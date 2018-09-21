@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import DefaultLayout from '../layouts/Default';
-import ContentList from '../components/Content/List';
 import redirect from '../lib/redirect';
 import errors from '../lib/errors';
 import { sectionAsPath, sectionHref } from '../lib/section-paths';
+
+import DefaultLayout from '../layouts/Default';
+import BlockHeroA from '../components/Site/Content/Block/HeroA';
 
 import sectionPage from '../gql/queries/section-page.graphql';
 
@@ -12,7 +13,7 @@ const SectionPage = ({ section }) => (
   <DefaultLayout>
     <main>
       <h1>{section.name}</h1>
-      <ContentList sectionId={section.id} />
+      <BlockHeroA query={{ sectionId: section.id, first: 7, requiresImage: true }} />
     </main>
   </DefaultLayout>
 );

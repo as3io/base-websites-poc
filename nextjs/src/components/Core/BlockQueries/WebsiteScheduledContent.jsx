@@ -9,6 +9,7 @@ import gql from 'graphql-tag';
 const WebsiteScheduledContent = ({
   after,
   children,
+  excludeContentIds,
   excludeContentTypes,
   first,
   fields,
@@ -20,6 +21,7 @@ const WebsiteScheduledContent = ({
   const pagination = { first, after };
   const input = {
     pagination,
+    excludeContentIds,
     excludeContentTypes,
     includeContentTypes,
     requiresImage,
@@ -58,6 +60,7 @@ const WebsiteScheduledContent = ({
 WebsiteScheduledContent.defaultProps = {
   after: null,
   children: () => {},
+  excludeContentIds: [],
   excludeContentTypes: [],
   first: 5,
   includeContentTypes: [],
@@ -68,6 +71,7 @@ WebsiteScheduledContent.defaultProps = {
 WebsiteScheduledContent.propTypes = {
   after: PropTypes.string,
   children: PropTypes.func,
+  excludeContentIds: PropTypes.arrayOf(PropTypes.string),
   excludeContentTypes: PropTypes.arrayOf(PropTypes.string),
   fields: PropTypes.string.isRequired,
   first: PropTypes.number,
