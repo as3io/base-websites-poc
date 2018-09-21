@@ -56,17 +56,6 @@ const fields = `
       canonicalPath
     }
   }
-  ... on PlatformContentArticle {
-    authors(input: { sort: { field: lastName }, pagination: { first: 3 } }) {
-      edges {
-        node {
-          id
-          fullName
-          canonicalPath
-        }
-      }
-    }
-  }
 `;
 
 const BlockHeroA = ({ className, query }) => {
