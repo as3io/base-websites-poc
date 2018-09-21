@@ -8,6 +8,7 @@ import ListGroupStyleA from '../ListGroup/StyleA';
 const displayName = 'Site/Content/Block/HeroA';
 
 const propTypes = {
+  className: PropTypes.string,
   // @todo These should be placed here by a HOC.
   query: PropTypes.shape({
     after: PropTypes.string,
@@ -23,6 +24,7 @@ const propTypes = {
 };
 
 const defaultProps = {
+  className: null,
   query: {},
 };
 
@@ -67,7 +69,7 @@ const fields = `
   }
 `;
 
-const BlockHeroA = ({ query }) => {
+const BlockHeroA = ({ className, query }) => {
   const props = { ...query, fields };
   return (
     <WebsiteScheduledContent {...props}>
@@ -87,10 +89,10 @@ const BlockHeroA = ({ query }) => {
         return (
           <div className="row">
             <div className="col-lg-8">
-              <CardStyleA node={hero} className="mb-3" />
+              <CardStyleA node={hero} className={className} />
             </div>
             <div className="col-lg-4">
-              <ListGroupStyleA nodes={listItems} />
+              <ListGroupStyleA nodes={listItems} className={className} />
             </div>
           </div>
         );

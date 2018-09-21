@@ -15,6 +15,7 @@ const SectionPage = ({ section }) => (
     <main>
       <h1>{section.name}</h1>
       <BlockHeroA
+        className="mb-3"
         query={{
           sectionId: section.id,
           first: 7,
@@ -25,6 +26,7 @@ const SectionPage = ({ section }) => (
       <div className="row">
         <div className="col-lg-4">
           <BlockCardListGroupA
+            className="my-3"
             header="Products"
             query={{
               sectionId: section.id,
@@ -35,13 +37,23 @@ const SectionPage = ({ section }) => (
           />
         </div>
         <div className="col-lg-4">
-          <div className="card">
+          <div className="card my-3">
             <div className="card-body text-center">
               <img src="https://dummyimage.com/300x600/ccc/000" alt="300x600 Advertisement" />
             </div>
           </div>
         </div>
-        <div className="col-lg-4" />
+        <div className="col-lg-4">
+          <BlockCardListGroupA
+            className="my-3"
+            header="Firearms"
+            query={{
+              sectionId: 56156,
+              first: 4,
+              requiresImage: true,
+            }}
+          />
+        </div>
       </div>
       <hr />
       <div className="row">

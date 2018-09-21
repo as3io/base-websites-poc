@@ -33,7 +33,7 @@ const CardListGroupStyleA = ({
   return (
     <ContentCard id={content.id} type={content.type} className={className}>
       {header && (
-        <div className="card-header">{header}</div>
+        <div className="card-header mb-3">{header}</div>
       )}
       <CardBodyStyleA node={content} />
       <ListGroupStyleA nodes={listContent} flush />

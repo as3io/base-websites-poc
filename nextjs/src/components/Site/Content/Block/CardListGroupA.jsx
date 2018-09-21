@@ -7,6 +7,7 @@ import CardListGroupStyleA from '../CardListGroup/StyleA';
 const displayName = 'Site/Content/Block/CardListGroupA';
 
 const propTypes = {
+  className: PropTypes.string,
   header: PropTypes.string,
   // @todo These should be placed here by a HOC.
   query: PropTypes.shape({
@@ -23,6 +24,7 @@ const propTypes = {
 };
 
 const defaultProps = {
+  className: null,
   header: '',
   query: {},
 };
@@ -68,7 +70,7 @@ const fields = `
   }
 `;
 
-const BlockCardListGroupA = ({ query, header }) => {
+const BlockCardListGroupA = ({ className, query, header }) => {
   const props = { ...query, fields };
   return (
     <WebsiteScheduledContent {...props}>
@@ -83,7 +85,7 @@ const BlockCardListGroupA = ({ query, header }) => {
             </span>
           );
         }
-        return <CardListGroupStyleA header={header} nodes={items} />;
+        return <CardListGroupStyleA className={className} header={header} nodes={items} />;
       }}
     </WebsiteScheduledContent>
   );
