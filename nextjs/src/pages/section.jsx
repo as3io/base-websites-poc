@@ -7,6 +7,7 @@ import { sectionAsPath, sectionHref } from '../lib/section-paths';
 import DefaultLayout from '../layouts/Default';
 import BlockHeroA from '../components/Site/Content/Block/HeroA';
 import BlockCardListGroupA from '../components/Site/Content/Block/CardListGroupA';
+import BlockCardDeckA from '../components/Site/Content/Block/CardDeckA';
 import PlaceholderAd from '../components/Site/PlaceholderAd';
 
 import sectionPage from '../gql/queries/section-page.graphql';
@@ -102,6 +103,12 @@ const SectionPage = ({ section }) => (
         </div>
       </div>
       <hr />
+      <BlockCardDeckA
+        query={{
+          sectionId: section.id,
+          first: 8,
+        }}
+      />
     </main>
   </DefaultLayout>
 );

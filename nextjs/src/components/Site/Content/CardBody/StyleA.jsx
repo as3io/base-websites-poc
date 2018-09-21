@@ -15,21 +15,25 @@ import ContentType from '../../../Templates/Content/Elements/ContentType';
 const displayName = 'Site/Content/CardBody/StyleA';
 
 const propTypes = {
+  className: PropTypes.string,
+  imageClassName: PropTypes.string,
   node: PropTypes.shape({
     id: PropTypes.number,
   }),
 };
 
 const defaultProps = {
+  className: null,
+  imageClassName: null,
   node: {},
 };
 
-const CardBodyStyleA = ({ node }) => {
+const CardBodyStyleA = ({ className, imageClassName, node }) => {
   const content = node || {};
   return content.id ? (
     <>
-      <ContentCardImage content={content} />
-      <ContentCardBody>
+      <ContentCardImage content={content} className={imageClassName} />
+      <ContentCardBody className={className}>
         <ContentType content={content} tag="small" className="d-block mb-1" />
         <ShortNameLink content={content} />
         <CompanyLink company={content.company} tag="small" className="card-text d-block" prefix="From" />
