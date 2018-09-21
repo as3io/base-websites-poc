@@ -83,7 +83,7 @@ const BlockHeroA = ({ query }) => {
           );
         }
         const hero = items[0] || {};
-        const listItems = items.slice(1);
+        const listItems = items.slice(1) || [];
         return (
           <div className="row">
             <div className="col-lg-8">

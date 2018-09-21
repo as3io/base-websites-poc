@@ -6,6 +6,7 @@ import { sectionAsPath, sectionHref } from '../lib/section-paths';
 
 import DefaultLayout from '../layouts/Default';
 import BlockHeroA from '../components/Site/Content/Block/HeroA';
+import BlockCardListGroupA from '../components/Site/Content/Block/CardListGroupA';
 
 import sectionPage from '../gql/queries/section-page.graphql';
 
@@ -13,7 +14,48 @@ const SectionPage = ({ section }) => (
   <DefaultLayout>
     <main>
       <h1>{section.name}</h1>
-      <BlockHeroA query={{ sectionId: section.id, first: 7, requiresImage: true }} />
+      <BlockHeroA
+        query={{
+          sectionId: section.id,
+          first: 7,
+          requiresImage: true,
+        }}
+      />
+      <hr />
+      <div className="row">
+        <div className="col-lg-4">
+          <BlockCardListGroupA
+            header="Products"
+            query={{
+              sectionId: section.id,
+              first: 4,
+              includeContentTypes: ['Product'],
+              requiresImage: true,
+            }}
+          />
+        </div>
+        <div className="col-lg-4">
+          <div className="card">
+            <div className="card-body text-center">
+              <img src="https://dummyimage.com/300x600/ccc/000" alt="300x600 Advertisement" />
+            </div>
+          </div>
+        </div>
+        <div className="col-lg-4" />
+      </div>
+      <hr />
+      <div className="row">
+        <div className="col-lg-4" />
+        <div className="col-lg-4" />
+        <div className="col-lg-4" />
+      </div>
+      <hr />
+      <div className="row">
+        <div className="col-lg-4" />
+        <div className="col-lg-4" />
+        <div className="col-lg-4" />
+      </div>
+      <hr />
     </main>
   </DefaultLayout>
 );
