@@ -29,8 +29,8 @@ const CardBodyStyleA = ({ node }) => {
     <>
       <ContentCardImage content={content} />
       <ContentCardBody>
-        <ShortNameLink content={content} className="card-title" />
-        <CompanyLink company={content.company} className="card-text" />
+        <ShortNameLink content={content} />
+        <CompanyLink company={content.company} tag="small" className="card-text d-block" prefix="From" />
         <Teaser {...content} className="card-text" />
         <ElementsRow tag="small" className="card-text">
           <PrimarySectionLink {...content} className="mr-2" />

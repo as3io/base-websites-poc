@@ -77,10 +77,10 @@ const BlockHeroA = ({ className, query }) => {
         const listItems = items.slice(1) || [];
         return (
           <div className="row">
-            <div className="col-lg-8">
+            <div className="col-lg-7 col-xl-8">
               <CardStyleA node={hero} className={className} />
             </div>
-            <div className="col-lg-4">
+            <div className="col-lg-5 col-xl-4">
               <ListGroupStyleA nodes={listItems} className={className} />
             </div>
           </div>

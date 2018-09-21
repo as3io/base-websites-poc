@@ -37,7 +37,7 @@ const SectionPage = ({ section }) => (
             }}
           />
         </div>
-        <div className="col-lg-4">
+        <div className="col-lg-4 p-0">
           <PlaceholderAd size="300x600" className="my-3" />
         </div>
         <div className="col-lg-4">
@@ -93,11 +93,11 @@ const SectionPage = ({ section }) => (
       </div>
       <hr />
       <div className="row">
-        <div className="col-lg-4">
+        <div className="col-lg-4 p-0">
           <PlaceholderAd size="300x600" className="my-3" />
         </div>
-        <div className="col-lg-4" />
-        <div className="col-lg-4">
+        <div className="col-lg-4 p-0" />
+        <div className="col-lg-4 p-0">
           <PlaceholderAd size="300x600" className="my-3" />
         </div>
       </div>
