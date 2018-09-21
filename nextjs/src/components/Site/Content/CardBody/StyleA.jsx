@@ -10,6 +10,7 @@ import Teaser from '../../../Templates/Content/Elements/Teaser';
 import CompanyLink from '../../../Templates/Content/Elements/CompanyLink';
 import PrimarySectionLink from '../../../Templates/Content/Elements/PrimarySectionLink';
 import PublishedDate from '../../../Templates/Content/Elements/PublishedDate';
+import ContentType from '../../../Templates/Content/Elements/ContentType';
 
 const displayName = 'Site/Content/CardBody/StyleA';
 
@@ -29,6 +30,7 @@ const CardBodyStyleA = ({ node }) => {
     <>
       <ContentCardImage content={content} />
       <ContentCardBody>
+        <ContentType content={content} tag="small" className="d-block mb-1" />
         <ShortNameLink content={content} />
         <CompanyLink company={content.company} tag="small" className="card-text d-block" prefix="From" />
         <Teaser {...content} className="card-text" />

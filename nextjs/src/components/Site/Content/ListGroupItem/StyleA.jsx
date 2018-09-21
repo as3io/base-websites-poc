@@ -8,6 +8,7 @@ import ShortNameLink from '../../../Templates/Content/Elements/ShortNameLink';
 import CompanyLink from '../../../Templates/Content/Elements/CompanyLink';
 import PrimarySectionLink from '../../../Templates/Content/Elements/PrimarySectionLink';
 import PublishedDate from '../../../Templates/Content/Elements/PublishedDate';
+import ContentType from '../../../Templates/Content/Elements/ContentType';
 
 const displayName = 'Site/Content/ListGroupItem/StyleA';
 
@@ -25,6 +26,7 @@ const ListGroupItemStyleA = ({ node }) => {
   const content = node || {};
   return content.id ? (
     <ContentListGroupItem id={content.id} key={content.id} type={content.type}>
+      <ContentType content={content} tag="small" className="d-block mb-1" />
       <ShortNameLink content={content} className="mb-1" />
       <CompanyLink company={content.company} tag="small" className="d-block" prefix="From" />
       <ElementsRow tag="small">
