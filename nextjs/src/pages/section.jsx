@@ -57,9 +57,42 @@ const SectionPage = ({ section }) => (
       </div>
       <hr />
       <div className="row">
-        <div className="col-lg-4" />
-        <div className="col-lg-4" />
-        <div className="col-lg-4" />
+        <div className="col-lg-4">
+          <BlockCardListGroupA
+            className="my-3"
+            header="News"
+            query={{
+              sectionId: section.id,
+              first: 4,
+              includeContentTypes: ['News', 'PressRelease'],
+              requiresImage: true,
+            }}
+          />
+        </div>
+        <div className="col-lg-4">
+          <BlockCardListGroupA
+            className="my-3"
+            header="Features"
+            query={{
+              sectionId: section.id,
+              first: 4,
+              includeContentTypes: ['Article', 'Blog', 'MediaGallery'],
+              requiresImage: true,
+            }}
+          />
+        </div>
+        <div className="col-lg-4">
+          <BlockCardListGroupA
+            className="my-3"
+            header="Video"
+            query={{
+              sectionId: section.id,
+              first: 4,
+              includeContentTypes: ['Video'],
+              requiresImage: true,
+            }}
+          />
+        </div>
       </div>
       <hr />
       <div className="row">
