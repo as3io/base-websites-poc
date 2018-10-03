@@ -29,7 +29,7 @@ ContentPage.getInitialProps = async (ctx) => {
     req,
   } = ctx;
   const { id } = query;
-  const input = { id };
+  const input = { id: Number(id) };
   const variables = { input };
 
   // @todo Make this a HOC for all pages.
