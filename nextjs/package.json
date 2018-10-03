@@ -12,7 +12,7 @@
     "start": "NODE_ENV=production node server.js"
   },
   "dependencies": {
-    "@zeit/next-css": "^0.2.0",
+    "@zeit/next-css": "^1.0.1",
     "apollo-cache-inmemory": "^1.2.10",
     "apollo-client": "^2.4.2",
     "apollo-link": "^1.2.3",
@@ -29,7 +29,7 @@
     "helmet": "^3.13.0",
     "isomorphic-unfetch": "^3.0.0",
     "moment": "^2.22.2",
-    "next": "^6.1.2",
+    "next": "^7.0.1",
     "prop-types": "^15.6.2",
     "react": "^16.5.2",
     "react-apollo": "^2.2.4",
