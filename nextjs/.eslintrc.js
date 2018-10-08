@@ -3,6 +3,7 @@ module.exports = {
   plugins: [
     'react',
   ],
+  parser: 'babel-eslint',
   env: {
     browser: true,
   },
