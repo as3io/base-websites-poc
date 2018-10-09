@@ -2,12 +2,12 @@
   "siteName": "Officer.com",
   "siteLogo": "https://cdn.officer.com/files/base/cygnus/ofcr/image/static/logo/site_logo.png",
   "primaryNavItems": [
-    { "href": "/section?alias=tactical", "name": "Tactical", "as": "/section/tactical" },
-    { "href": "/section?alias=training-careers", "name": "Training & Careers", "as": "/section/training-careers" },
-    { "href": "/section?alias=on-the-street", "name": "On The Street", "as": "/section/on-the-street" },
-    { "href": "/section?alias=investigations", "name": "Investigations", "as": "/section/investigations" },
-    { "href": "/section?alias=command-hq", "name": "Command/HQ", "as": "/section/command-hq" },
-    { "href": "/section?alias=directory", "name": "Product Guide", "as": "/section/directory" },
-    { "href": "https://forum.officer.com", "name": "Forums" }
+    { "name": "Tactical", "route": "/section/tactical" },
+    { "name": "Training & Careers", "route": "/section/training-careers" },
+    { "name": "On The Street", "route": "/section/on-the-street" },
+    { "name": "Investigations", "route": "/section/investigations" },
+    { "name": "Command/HQ", "route": "/section/command-hq" },
+    { "name": "Product Guide", "route": "/section/directory" },
+    { "name": "Forums", "href": "https://forum.officer.com/" }
   ]
 }

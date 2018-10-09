@@ -1,17 +1,16 @@
 import React from 'react';
-import Link from 'next/link';
 import PropTypes from 'prop-types';
 import { NavItem, NavLink } from 'reactstrap';
 import { withRouter } from 'next/router';
+import { Link } from '../../routes';
 
 const ActiveNavItem = ({
   children,
   router,
-  href,
-  as,
+  route,
   title,
 }) => {
-  const navItemPath = as || href;
+  const navItemPath = route;
   const stripped = navItemPath.replace(/^\/section/, '');
 
   let isActive = false;
@@ -25,7 +24,7 @@ const ActiveNavItem = ({
 
   return (
     <NavItem active={isActive}>
-      <Link href={href} as={as} passHref>
+      <Link route={route} passHref>
         <NavLink title={title}>{children}</NavLink>
       </Link>
     </NavItem>
@@ -33,9 +32,8 @@ const ActiveNavItem = ({
 };
 
 ActiveNavItem.propTypes = {
-  href: PropTypes.string.isRequired,
   title: PropTypes.string,
-  as: PropTypes.string,
+  route: PropTypes.string.isRequired,
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node,
@@ -46,7 +44,6 @@ ActiveNavItem.propTypes = {
 };
 
 ActiveNavItem.defaultProps = {
-  as: null,
   title: null,
 };
 

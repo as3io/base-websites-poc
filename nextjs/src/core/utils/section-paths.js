@@ -1,7 +1,13 @@
 /**
  * @param {string} alias
  */
-export const cleanPath = alias => String(alias).replace(/^\/+/, '').replace(/\/+$/, '');
+export const cleanPath = alias => String(alias).trim().replace(/^\/+/, '').replace(/\/+$/, '');
+
+export const shouldGoToIndex = (alias) => {
+  const path = cleanPath(alias);
+  if (!alias || path === 'home' || path === '') return true;
+  return false;
+};
 
 /**
  * Generates the website section `asPath` (as used by the NextJS router).
@@ -15,9 +21,9 @@ export const cleanPath = alias => String(alias).replace(/^\/+/, '').replace(/\/+
  * @param {string} [basePath=section] The section base path.
  */
 export const sectionAsPath = (alias, basePath = 'section') => {
-  if (!alias || alias === '/') return '/';
-  const path = cleanPath(alias);
+  if (shouldGoToIndex(alias)) return '/';
 
+  const path = cleanPath(alias);
   if (!basePath) return `/${path}`;
   return `/${cleanPath(basePath)}/${path}`;
 };
@@ -35,6 +41,6 @@ export const sectionAsPath = (alias, basePath = 'section') => {
  * @param {string} [basePath=section] The section base path.
  */
 export const sectionHref = (alias, basePath = 'section') => {
-  if (!alias || alias === '/') return `/${cleanPath(basePath)}?alias=home`;
+  if (shouldGoToIndex(alias)) return '/';
   return `/${cleanPath(basePath)}?alias=${cleanPath(alias)}`;
 };
