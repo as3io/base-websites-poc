@@ -1,11 +1,26 @@
+/* eslint-disable no-console */
 const next = require('next');
-const loadServer = require('./src/server');
+const helmet = require('helmet');
+const express = require('express');
+const compression = require('compression');
+const { graphql, env } = require('./src/core/server');
+const routes = require('./routes');
 
-const dev = process.env.NODE_ENV !== 'production';
-const client = next({ dev, dir: './src' });
+const { PORT, isProduction } = env;
 
-client.prepare().then(() => loadServer(client)).catch((ex) => {
-  // eslint-disable-next-line no-console
+const app = next({ dev: !isProduction, dir: './src' });
+
+app.prepare().then(() => {
+  express()
+    .use('/graphql', graphql.router) // @todo Make this a function
+    .use(routes.getRequestHandler(app))
+    .use(helmet())
+    .use(compression())
+    .listen(PORT, (err) => {
+      if (err) throw err;
+      console.log(`> Ready on http://localhost:${PORT}`);
+    });
+}).catch((ex) => {
   console.error(ex.stack);
   process.exit(1);
 });
