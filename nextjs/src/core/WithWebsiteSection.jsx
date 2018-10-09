@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import gql from 'graphql-tag';
 
 import displayName from './utils/component-display-name';
 import sectionPath from './utils/section-path';
 import redirect from './utils/redirect';
 import httpErrors from './utils/http-errors';
+import extractFragmentName from './utils/extract-fragment-name';
 
-import sectionQuery from './gql/queries/with-website-section.graphql';
+import defaultFragment from './gql/fragments/with-website-section.graphql';
 
 import { withRequestOrigin, withRequestOriginPropTypes } from './WithRequestOrigin';
 
@@ -24,8 +26,38 @@ export const withWebsiteSectionPropTypes = {
   ...withRequestOriginPropTypes,
 };
 
+/**
+ * Builds the website section GraphQL query.
+ */
+export const buildQuery = ({ fragment }) => {
+  let spreadFragmentName = '';
+  let processedFragment = '';
+  if (fragment) {
+    const fragmentName = extractFragmentName(fragment);
+    if (!fragmentName) throw new Error('Unable to extract a fragment name.');
+    processedFragment = fragment;
+    spreadFragmentName = `...${fragmentName}`;
+  }
+
+  return gql`
+    query WithWebsiteSection($input: WebsiteSectionAliasQueryInput!) {
+      websiteSectionAlias(input: $input) {
+        ...WithWebsiteSectionFragment
+        ${spreadFragmentName}
+      }
+      websiteSectionRedirect(input: $input) {
+        id
+        alias
+      }
+    }
+    ${defaultFragment}
+    ${processedFragment}
+  `;
+};
+
 export const withWebsiteSection = (Page, options = {
   routePrefix: 'section',
+  fragment: null,
 }) => {
   class WithWebsiteSection extends Component {
     /**
@@ -38,6 +70,7 @@ export const withWebsiteSection = (Page, options = {
         pageProps = await Page.getInitialProps(ctx);
       }
 
+      const { fragment, routePrefix } = options;
       const { query, apollo, res } = ctx;
       // Get the section alias from the page query.
       // Note: the section alias is required for this HOC to function properly.
@@ -46,19 +79,19 @@ export const withWebsiteSection = (Page, options = {
       // Query for the website section using the alias, via the injected apollo client.
       const input = { alias };
       const variables = { input };
-      const { data } = await apollo.query({ query: sectionQuery, variables });
+      const { data } = await apollo.query({ query: buildQuery({ fragment }), variables });
       const { websiteSectionAlias, websiteSectionRedirect } = data;
 
       if (websiteSectionAlias) {
         // The website section was found. Return it allong with the page props.
-        const canonicalPath = sectionPath(alias, options.routePrefix);
+        const canonicalPath = sectionPath(alias, routePrefix);
         return { section: websiteSectionAlias, canonicalPath, ...pageProps };
       }
 
       if (websiteSectionRedirect && websiteSectionRedirect.alias) {
         // A redirect was found for this section alias. Force a redirect.
         const { alias: redirectAlias } = websiteSectionRedirect;
-        const path = sectionPath(redirectAlias, options.routePrefix);
+        const path = sectionPath(redirectAlias, routePrefix);
         redirect(res, path);
         return { section: {}, canonicalPath: path, ...pageProps };
       }
