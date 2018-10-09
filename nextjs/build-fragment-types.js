@@ -2,7 +2,7 @@
 
 const fetch = require('isomorphic-unfetch');
 const fs = require('fs');
-const env = require('./src/server/env');
+const env = require('./src/core/server/env');
 
 const { GRAPHQL_URL, TENANT_KEY, GRAPHQL_TOKEN } = env;
 
