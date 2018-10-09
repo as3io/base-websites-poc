@@ -12,6 +12,11 @@ module.exports = routes()
     page: 'section/tactical',
   })
   .add({
+    name: 'section-layout-a',
+    pattern: '/section/:alias(training-careers|investigations)',
+    page: 'section/layout-a',
+  })
+  .add({
     name: 'section',
     pattern: '/section/:alias(.*)',
     page: 'section',
