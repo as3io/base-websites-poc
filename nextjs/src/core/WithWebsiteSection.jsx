@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import displayName from './utils/component-display-name';
-import { sectionAsPath, sectionHref } from './utils/section-paths';
+import sectionPath from './utils/section-path';
 import redirect from './utils/redirect';
 import httpErrors from './utils/http-errors';
 import sectionQuery from './gql/queries/with-website-section.graphql';
@@ -52,9 +52,8 @@ export const withWebsiteSection = (Page, options = {
       if (websiteSectionRedirect && websiteSectionRedirect.alias) {
         // A redirect was found for this section alias. Force a redirect.
         const { alias: redirectAlias } = websiteSectionRedirect;
-        const href = sectionHref(redirectAlias, options.basePath);
-        const asPath = sectionAsPath(redirectAlias, options.basePath);
-        redirect(res, href, asPath);
+        const path = sectionPath(redirectAlias, options.basePath);
+        redirect(res, path);
         return { ...pageProps };
       }
 
