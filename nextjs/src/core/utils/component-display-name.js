@@ -1,1 +1,4 @@
-export default Comp => Comp.displayName || Comp.name || 'Component';
+export default (Comp) => {
+  if (typeof Comp === 'string') return Comp;
+  return Comp.displayName || Comp.name || 'Unknown';
+};
