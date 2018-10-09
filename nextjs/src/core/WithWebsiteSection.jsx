@@ -5,10 +5,15 @@ import displayName from './utils/component-display-name';
 import sectionPath from './utils/section-path';
 import redirect from './utils/redirect';
 import httpErrors from './utils/http-errors';
+
 import sectionQuery from './gql/queries/with-website-section.graphql';
+
 import { withRequestOrigin, withRequestOriginPropTypes } from './WithRequestOrigin';
 
+import RelCanonical from './components/RelCanonical';
+
 export const withWebsiteSectionPropTypes = {
+  canonicalPath: PropTypes.string.isRequired,
   section: PropTypes.shape({
     id: PropTypes.number.isRequired,
     alias: PropTypes.string.isRequired,
@@ -46,7 +51,8 @@ export const withWebsiteSection = (Page, options = {
 
       if (websiteSectionAlias) {
         // The website section was found. Return it allong with the page props.
-        return { section: websiteSectionAlias, ...pageProps };
+        const canonicalPath = sectionPath(alias, options.basePath);
+        return { section: websiteSectionAlias, canonicalPath, ...pageProps };
       }
 
       if (websiteSectionRedirect && websiteSectionRedirect.alias) {
@@ -54,7 +60,7 @@ export const withWebsiteSection = (Page, options = {
         const { alias: redirectAlias } = websiteSectionRedirect;
         const path = sectionPath(redirectAlias, options.basePath);
         redirect(res, path);
-        return { ...pageProps };
+        return { section: {}, canonicalPath: path, ...pageProps };
       }
 
       // No website section or redirect was found for this alias. Return a 404.
@@ -65,7 +71,13 @@ export const withWebsiteSection = (Page, options = {
      *
      */
     render() {
-      return <Page {...this.props} />;
+      const { requestOrigin, canonicalPath } = this.props;
+      return (
+        <>
+          <RelCanonical origin={requestOrigin} pathname={canonicalPath} />
+          <Page {...this.props} />
+        </>
+      );
     }
   }
   WithWebsiteSection.displayName = `WithWebsiteSection(${displayName(Page)})`;
