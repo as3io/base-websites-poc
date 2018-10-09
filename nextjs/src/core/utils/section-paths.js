@@ -1,11 +1,8 @@
-/**
- * @param {string} alias
- */
-export const cleanPath = alias => String(alias).trim().replace(/^\/+/, '').replace(/\/+$/, '');
+import cleanPath from './clean-path';
 
 export const shouldGoToIndex = (alias) => {
   const path = cleanPath(alias);
-  if (!alias || path === 'home' || path === '') return true;
+  if (path === 'home' || path === '') return true;
   return false;
 };
 
