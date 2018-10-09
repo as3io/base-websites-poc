@@ -17,16 +17,16 @@ const shouldGoToIndex = (alias) => {
  * By default, if the section alias were `tactical/firearms`, this method
  * would generate `/section/tactical/firearms`.
  *
- * The `basePath` (the default is 'section') can also be overriden by passing a different value.
+ * The `routePrefix` (the default is 'section') can also be overriden by passing a different value.
  * Keep in mind, if this is done, the root routes.js file will need modification.
  *
  * @param {string} alias The website section alias
- * @param {string} [basePath=section] The section base path.
+ * @param {string} [routePrefix=section] The section base path.
  */
-export default (alias, basePath = 'section') => {
+export default (alias, routePrefix = 'section') => {
   if (shouldGoToIndex(alias)) return '/';
 
   const path = cleanPath(alias);
-  if (!basePath) return `/${path}`;
-  return `/${cleanPath(basePath)}/${path}`;
+  if (!routePrefix) return `/${path}`;
+  return `/${cleanPath(routePrefix)}/${path}`;
 };

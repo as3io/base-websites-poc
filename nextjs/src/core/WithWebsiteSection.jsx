@@ -25,7 +25,7 @@ export const withWebsiteSectionPropTypes = {
 };
 
 export const withWebsiteSection = (Page, options = {
-  basePath: 'section',
+  routePrefix: 'section',
 }) => {
   class WithWebsiteSection extends Component {
     /**
@@ -51,14 +51,14 @@ export const withWebsiteSection = (Page, options = {
 
       if (websiteSectionAlias) {
         // The website section was found. Return it allong with the page props.
-        const canonicalPath = sectionPath(alias, options.basePath);
+        const canonicalPath = sectionPath(alias, options.routePrefix);
         return { section: websiteSectionAlias, canonicalPath, ...pageProps };
       }
 
       if (websiteSectionRedirect && websiteSectionRedirect.alias) {
         // A redirect was found for this section alias. Force a redirect.
         const { alias: redirectAlias } = websiteSectionRedirect;
-        const path = sectionPath(redirectAlias, options.basePath);
+        const path = sectionPath(redirectAlias, options.routePrefix);
         redirect(res, path);
         return { section: {}, canonicalPath: path, ...pageProps };
       }
