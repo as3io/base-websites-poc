@@ -1,0 +1,13 @@
+query WithWebsiteSection($input: WebsiteSectionAliasQueryInput!) {
+	websiteSectionAlias(input: $input) {
+		id
+    name
+    description
+    seoTitle
+    alias
+	}
+  websiteSectionRedirect(input: $input) {
+		id
+    alias
+	}
+}
