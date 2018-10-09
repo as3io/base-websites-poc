@@ -6,8 +6,9 @@ import { sectionAsPath, sectionHref } from './utils/section-paths';
 import redirect from './utils/redirect';
 import httpErrors from './utils/http-errors';
 import sectionQuery from './gql/queries/with-website-section.graphql';
+import { withRequestOrigin, withRequestOriginPropTypes } from './WithRequestOrigin';
 
-export const sectionPropType = {
+export const withWebsiteSectionPropTypes = {
   section: PropTypes.shape({
     id: PropTypes.number.isRequired,
     alias: PropTypes.string.isRequired,
@@ -15,6 +16,7 @@ export const sectionPropType = {
     description: PropTypes.string,
     seoTitle: PropTypes.string,
   }),
+  ...withRequestOriginPropTypes,
 };
 
 export const withWebsiteSection = (Page, options = {
@@ -68,5 +70,5 @@ export const withWebsiteSection = (Page, options = {
     }
   }
   WithWebsiteSection.displayName = `WithWebsiteSection(${displayName(Page)})`;
-  return WithWebsiteSection;
+  return withRequestOrigin(WithWebsiteSection);
 };
