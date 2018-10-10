@@ -11,7 +11,7 @@ import defaultFragment from './gql/fragments/with-platform-content.graphql';
 
 import { withRequestOrigin, withRequestOriginPropTypes } from './WithRequestOrigin';
 
-import RelCanonical from './components/RelCanonical';
+import RelCanonical from './components/Elements/RelCanonical';
 
 export const withPlatformContentPropTypes = {
   canonicalPath: PropTypes.string.isRequired,

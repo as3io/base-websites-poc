@@ -2,17 +2,17 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Head from 'next/head';
 
-import cleanPath from '../utils/clean-path';
+import cleanPath from '../../utils/clean-path';
 
-const RelCanonical = ({ origin, pathname }) => (
+const RelCanonicalElement = ({ origin, pathname }) => (
   <Head>
     <link rel="canonical" href={`${origin}/${cleanPath(pathname)}`} />
   </Head>
 );
 
-RelCanonical.propTypes = {
+RelCanonicalElement.propTypes = {
   pathname: PropTypes.string.isRequired,
   origin: PropTypes.string.isRequired,
 };
 
-export default RelCanonical;
+export default RelCanonicalElement;

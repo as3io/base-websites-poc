@@ -12,7 +12,7 @@ import defaultFragment from './gql/fragments/with-website-section.graphql';
 
 import { withRequestOrigin, withRequestOriginPropTypes } from './WithRequestOrigin';
 
-import RelCanonical from './components/RelCanonical';
+import RelCanonical from './components/Elements/RelCanonical';
 
 export const withWebsiteSectionPropTypes = {
   canonicalPath: PropTypes.string.isRequired,
