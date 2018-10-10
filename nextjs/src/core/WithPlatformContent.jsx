@@ -27,10 +27,16 @@ export const withPlatformContentPropTypes = {
   ...withRequestOriginPropTypes,
 };
 
+/**
+ *
+ * @param {object} params
+ * @param {string|object} params.fragment The query fragment, either as
+ *                                        a string or a gql AST object.
+ */
 export const buildQuery = ({ fragment }) => {
   const { spreadFragmentName, processedFragment } = extractFragmentData({ fragment });
   return gql`
-    query ContentPage($input: RootPlatformContentQueryOne!) {
+    query ContentPage($input: RootPlatformContentQueryOne!, $canonicalFields: [PlatfromContentPathField]!) {
       platformContent(input: $input) {
         ...WithPlatformContentFragment
         ${spreadFragmentName}
@@ -41,9 +47,14 @@ export const buildQuery = ({ fragment }) => {
   `;
 };
 
+/**
+ *
+ * @param {object} content
+ * @param {object} ctx
+ * @param {?object} ctx.res
+ * @param {string} ctx.asPath
+ */
 export const checkContent = (content, { res, asPath }) => {
-  // @todo Determine how this needs to change if the content route in
-  // routes.js changes.
   const { redirectTo, canonicalPath } = content;
   if (redirectTo) {
     redirect(res, redirectTo);
@@ -52,8 +63,15 @@ export const checkContent = (content, { res, asPath }) => {
   }
 };
 
+/**
+ *
+ * @param {object} Page
+ * @param {object} options
+ * @param {?string|object} options.fragment
+ */
 export const withPlatformContent = (Page, options = {
   fragment: null,
+  canonicalFields: ['sectionAlias', 'type', 'id', 'slug'],
 }) => {
   class WithPlatformContent extends Component {
     /**
@@ -66,7 +84,7 @@ export const withPlatformContent = (Page, options = {
         pageProps = await Page.getInitialProps(ctx);
       }
 
-      const { fragment } = options;
+      const { fragment, canonicalFields } = options;
       const { query, apollo } = ctx;
       // Get the content id from the page query
       // Note: the content id is required for this HOC to function properly.
@@ -74,7 +92,8 @@ export const withPlatformContent = (Page, options = {
 
       // Query for the content object using the id, via the inject apollo client.
       const input = { id: Number(id) };
-      const variables = { input };
+      // Pass the canonical args to generate the content's canonical (route) path.
+      const variables = { input, canonicalFields };
       const { data } = await apollo.query({ query: buildQuery({ fragment }), variables });
       const { platformContent } = data;
       if (!platformContent) {
@@ -84,6 +103,9 @@ export const withPlatformContent = (Page, options = {
       // Check content for internal/external redirects, etc.
       checkContent(platformContent, ctx);
       const { canonicalPath } = platformContent;
+      // @todo TextAds and Promotions can use an external URL. We _must_ account for this
+      // when using the `next-routes::Link` component, as external URLs do not inherently
+      // work.
       return { content: platformContent, canonicalPath, ...pageProps };
     }
 
