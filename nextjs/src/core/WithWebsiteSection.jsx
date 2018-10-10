@@ -6,7 +6,7 @@ import displayName from './utils/component-display-name';
 import sectionPath from './utils/section-path';
 import redirect from './utils/redirect';
 import httpErrors from './utils/http-errors';
-import extractFragmentName from './utils/extract-fragment-name';
+import extractFragmentData from './utils/extract-fragment-data';
 
 import defaultFragment from './gql/fragments/with-website-section.graphql';
 
@@ -30,15 +30,7 @@ export const withWebsiteSectionPropTypes = {
  * Builds the website section GraphQL query.
  */
 export const buildQuery = ({ fragment }) => {
-  let spreadFragmentName = '';
-  let processedFragment = '';
-  if (fragment) {
-    const fragmentName = extractFragmentName(fragment);
-    if (!fragmentName) throw new Error('Unable to extract a fragment name.');
-    processedFragment = fragment;
-    spreadFragmentName = `...${fragmentName}`;
-  }
-
+  const { spreadFragmentName, processedFragment } = extractFragmentData({ fragment });
   return gql`
     query WithWebsiteSection($input: WebsiteSectionAliasQueryInput!) {
       websiteSectionAlias(input: $input) {
