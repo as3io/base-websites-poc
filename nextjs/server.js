@@ -12,10 +12,10 @@ const app = next({ dev: !isProduction, dir: './src' });
 
 app.prepare().then(() => {
   express()
-    .use('/graphql', graphql.router) // @todo Make this a function
-    .use(routes.getRequestHandler(app))
     .use(helmet())
     .use(compression())
+    .use('/graphql', graphql.router) // @todo Make this a function
+    .use(routes.getRequestHandler(app))
     .listen(PORT, (err) => {
       if (err) throw err;
       console.log(`> Ready on http://localhost:${PORT}`);
